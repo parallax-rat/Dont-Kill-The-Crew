@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://lrsy71soov2i"
+path="res://.godot/imported/Of Far Different Nature - Act and Contemplate (CC-BY).ogg-adb6bc67210fef60ec77d14beed764ba.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music/Of Far Different Nature - Act and Contemplate (CC-BY).ogg"
+dest_files=["res://.godot/imported/Of Far Different Nature - Act and Contemplate (CC-BY).ogg-adb6bc67210fef60ec77d14beed764ba.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

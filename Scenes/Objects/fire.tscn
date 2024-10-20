@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://bp25a4yut84n3"]
+
+[ext_resource type="Texture2D" uid="uid://bg6b0mvh8aioo" path="res://Sprites/Effects/Fire.png" id="1_vtf80"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdp6e"]
+atlas = ExtResource("1_vtf80")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0b8w"]
+atlas = ExtResource("1_vtf80")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6mdk"]
+atlas = ExtResource("1_vtf80")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpv4f"]
+atlas = ExtResource("1_vtf80")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvvop"]
+atlas = ExtResource("1_vtf80")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpmxg"]
+atlas = ExtResource("1_vtf80")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frgle"]
+atlas = ExtResource("1_vtf80")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oaxq8"]
+atlas = ExtResource("1_vtf80")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uyxre"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdp6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0b8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6mdk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpv4f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvvop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vpmxg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frgle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oaxq8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="Fire" type="Area2D" groups=["Fire"]]
+metadata/Fire = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uyxre")
+autoplay = "default"
+frame_progress = 0.743181

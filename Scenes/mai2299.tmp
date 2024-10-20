@@ -1,0 +1,475 @@
+[gd_scene load_steps=23 format=3 uid="uid://cciwkt44rpu4e"]
+
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_ox14m"]
+[ext_resource type="Script" path="res://Scripts/camera_2d.gd" id="2_r7wak"]
+[ext_resource type="PackedScene" uid="uid://blpcm3y4w6ff3" path="res://Scenes/ship_map_64.tscn" id="3_6v3f5"]
+[ext_resource type="Texture2D" uid="uid://ddbo0fm8ymhbu" path="res://Sprites/Ship/base.png" id="3_tbutk"]
+[ext_resource type="Texture2D" uid="uid://thougc13ojc0" path="res://Sprites/Ship/floor.png" id="4_2q2sv"]
+[ext_resource type="Texture2D" uid="uid://dohtuo8v6i0je" path="res://Sprites/Lights/32x32 textures (52).png" id="4_7mps6"]
+[ext_resource type="Texture2D" uid="uid://eps720m78fmh" path="res://Sprites/Ship/walls.png" id="5_wni3e"]
+[ext_resource type="Script" path="res://Scripts/env_light_fx.gd" id="6_jhlw8"]
+[ext_resource type="FontFile" uid="uid://c4eu1kn67kihh" path="res://Font/PublicPixel.ttf" id="6_jjf2f"]
+[ext_resource type="Texture2D" uid="uid://bwigj5g0dpomq" path="res://Sprites/Ship/objects.png" id="6_yr78y"]
+[ext_resource type="PackedScene" uid="uid://bt6utos1kyh5x" path="res://Scenes/haz_light.tscn" id="7_mqarm"]
+[ext_resource type="PackedScene" uid="uid://bdb5t73834mp" path="res://Scenes/door.tscn" id="8_v8lmt"]
+[ext_resource type="PackedScene" uid="uid://da3p3lsyffnjk" path="res://Scenes/crewmate.tscn" id="9_ckl8l"]
+
+[sub_resource type="Animation" id="Animation_v12jr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:limit_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-64]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:limit_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-64]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:limit_right")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [320]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:limit_bottom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [320]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, 128)]
+}
+
+[sub_resource type="Animation" id="Animation_x0ixo"]
+resource_name = "zoom_to_64"
+length = 0.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:limit_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-64]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:limit_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-64]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:limit_right")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [320]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:limit_bottom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [320]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, 128)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nj360"]
+_data = {
+"RESET": SubResource("Animation_v12jr"),
+"zoom_to_64": SubResource("Animation_x0ixo")
+}
+
+[sub_resource type="Gradient" id="Gradient_ke25l"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_llenf"]
+gradient = SubResource("Gradient_ke25l")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_2p0bh"]
+vertices = PackedVector2Array(172, 80.8594, 172, 99.1328, 158.219, 112, 125.781, 112, 112, 99.1328, 112, 80.8594, 125.781, 68, 158.219, 68)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(125, 66, 159, 66, 174, 80, 174, 100, 159, 114, 125, 114, 110, 100, 110, 80)])
+agent_radius = 2.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_of6wy"]
+atlas = ExtResource("6_yr78y")
+region = Rect2(115.278, 105, 59.7224, 46)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_73jis"]
+polygon = PackedVector2Array(122, 76, 122, 75, 109, 75, 109, 71, 122, 71, 122, 16, 120, 14, 84, 14, 82, 16, 82, 71, 95, 71, 95, 75, 82, 75, 82, 76, 78, 76, 78, 75, 65, 75, 65, 71, 78, 71, 78, 21, 78, 9, 81, 6, 122, 6, 126, 10, 126, 21, 126, 76)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kxebr"]
+
+[node name="Game" type="Node2D"]
+texture_filter = 1
+texture_repeat = 3
+script = ExtResource("1_ox14m")
+
+[node name="MainCamera" type="Camera2D" parent="." node_paths=PackedStringArray("zoom_debug_label")]
+texture_filter = 1
+position = Vector2(128, 128)
+limit_left = -64
+limit_top = -64
+limit_right = 320
+limit_bottom = 320
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+editor_draw_limits = true
+script = ExtResource("2_r7wak")
+zSpeed = 0.15
+drag_speed = 160.0
+zoom_debug_label = NodePath("../DebugUI/Control/zoom_debug")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainCamera"]
+libraries = {
+"": SubResource("AnimationLibrary_nj360")
+}
+
+[node name="ShipMap64" type="CanvasLayer" parent="."]
+layer = 2
+follow_viewport_enabled = true
+
+[node name="ShipMap64" parent="ShipMap64" instance=ExtResource("3_6v3f5")]
+position = Vector2(96, 96)
+
+[node name="ShipMap256" type="CanvasGroup" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="ShipMap256"]
+z_index = -5
+position = Vector2(128, -64)
+scale = Vector2(1.5, 384)
+texture = SubResource("GradientTexture1D_llenf")
+
+[node name="Ship" type="Node2D" parent="ShipMap256"]
+
+[node name="Base" type="Sprite2D" parent="ShipMap256/Ship"]
+z_index = -1
+texture = ExtResource("3_tbutk")
+centered = false
+
+[node name="Floor" type="Sprite2D" parent="ShipMap256/Ship/Base"]
+texture = ExtResource("4_2q2sv")
+centered = false
+
+[node name="Walls" type="Sprite2D" parent="ShipMap256/Ship/Base/Floor"]
+texture = ExtResource("5_wni3e")
+centered = false
+
+[node name="HazLight" parent="ShipMap256/Ship" instance=ExtResource("7_mqarm")]
+position = Vector2(11, 52)
+
+[node name="Cafe" type="Node2D" parent="ShipMap256/Ship"]
+
+[node name="navr_cafe" type="NavigationRegion2D" parent="ShipMap256/Ship/Cafe"]
+position = Vector2(2, 38)
+navigation_polygon = SubResource("NavigationPolygon_2p0bh")
+
+[node name="Objects" type="Sprite2D" parent="ShipMap256/Ship/Cafe"]
+position = Vector2(144, 128)
+texture = SubResource("AtlasTexture_of6wy")
+
+[node name="navo_cafe_table" type="NavigationObstacle2D" parent="ShipMap256/Ship/Cafe/Objects"]
+radius = 12.0
+vertices = PackedVector2Array(-9, -4, -5, -9, 5, -9, 9, -4, 9, 4, 5, 9, -5, 9, -9, 4)
+affect_navigation_mesh = true
+
+[node name="Door" parent="ShipMap256/Ship/Cafe" instance=ExtResource("8_v8lmt")]
+position = Vector2(144, 102)
+
+[node name="Door2" parent="ShipMap256/Ship/Cafe" instance=ExtResource("8_v8lmt")]
+position = Vector2(144, 154)
+
+[node name="Door3" parent="ShipMap256/Ship/Cafe" instance=ExtResource("8_v8lmt")]
+position = Vector2(110, 128)
+rotation = -1.5708
+
+[node name="Door4" parent="ShipMap256/Ship/Cafe" instance=ExtResource("8_v8lmt")]
+position = Vector2(178, 128)
+rotation = 1.5708
+
+[node name="MxBay" type="Node2D" parent="ShipMap256/Ship"]
+
+[node name="Objects" type="Sprite2D" parent="ShipMap256/Ship/MxBay"]
+position = Vector2(97, 213)
+texture = ExtResource("6_yr78y")
+region_enabled = true
+region_rect = Rect2(71, 182, 52, 62)
+
+[node name="Door" parent="ShipMap256/Ship/MxBay/Objects" instance=ExtResource("8_v8lmt")]
+position = Vector2(3, -28)
+
+[node name="AmbientLight" type="CanvasModulate" parent="ShipMap256"]
+visible = false
+color = Color(0.0295066, 0.0295066, 0.0295065, 1)
+
+[node name="EnvOcclusion" type="LightOccluder2D" parent="ShipMap256"]
+visible = false
+position = Vector2(10, -34)
+occluder = SubResource("OccluderPolygon2D_73jis")
+
+[node name="PointLight2D6" type="PointLight2D" parent="ShipMap256"]
+visible = false
+texture_filter = 1
+position = Vector2(112, 21.9549)
+scale = Vector2(4.7, 5.90451)
+color = Color(0.607843, 1, 1, 1)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.290196)
+texture = ExtResource("4_7mps6")
+script = ExtResource("6_jhlw8")
+
+[node name="RegionNames" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Control" type="Control" parent="RegionNames"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+mouse_filter = 1
+
+[node name="Deck[0]" type="Label" parent="RegionNames/Control"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 250.667
+offset_top = 117.0
+offset_right = 306.667
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("6_jjf2f")
+theme_override_font_sizes/font_size = 8
+text = "Deck[0]"
+
+[node name="Cargo[1]" type="Label" parent="RegionNames/Control"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 208.0
+offset_top = 32.0
+offset_right = 272.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("6_jjf2f")
+theme_override_font_sizes/font_size = 8
+text = "Cargo[1]"
+
+[node name="Cargo[2]" type="Label" parent="RegionNames/Control"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 208.0
+offset_top = 234.667
+offset_right = 272.0
+offset_bottom = 242.667
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("6_jjf2f")
+theme_override_font_sizes/font_size = 8
+text = "Cargo[2]"
+
+[node name="Cryo[3]" type="Label" parent="RegionNames/Control"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 133.333
+offset_top = -22.6667
+offset_right = 189.333
+offset_bottom = -14.6667
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("6_jjf2f")
+theme_override_font_sizes/font_size = 8
+text = "Cryo[3]"
+
+[node name="Cryo[4]" type="Label" parent="RegionNames/Control"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 133.333
+offset_top = 289.333
+offset_right = 189.333
+offset_bottom = 297.333
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("6_jjf2f")
+theme_override_font_sizes/font_size = 8
+text = "Cryo[4]"
+
+[node name="Cafe[5]" type="Label" parent="RegionNames/Control"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 133.333
+offset_top = 112.0
+offset_right = 189.333
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("6_jjf2f")
+theme_override_font_sizes/font_size = 8
+text = "Cafe[5]"
+horizontal_alignment = 1
+
+[node name="ShipExterior" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ShipExterior" type="CanvasGroup" parent="ShipExterior"]
+texture_filter = 1
+position = Vector2(32, 32)
+
+[node name="ShipExterior" type="Sprite2D" parent="ShipExterior/ShipExterior"]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(-32, -32)
+texture = SubResource("CompressedTexture2D_kxebr")
+centered = false
+
+[node name="DebugUI" type="CanvasLayer" parent="."]
+scale = Vector2(0.25, 0.25)
+transform = Transform2D(0.25, 0, 0, 0.25, 0, 0)
+
+[node name="Control" type="Control" parent="DebugUI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="zoom_debug" type="Label" parent="DebugUI/Control"]
+texture_filter = 1
+layout_mode = 1
+offset_right = 80.0
+offset_bottom = 10.0
+theme_override_fonts/font = ExtResource("6_jjf2f")
+theme_override_font_sizes/font_size = 8
+text = "zoom debug"
+
+[node name="Crewmate" parent="." instance=ExtResource("9_ckl8l")]
+position = Vector2(28, -8)

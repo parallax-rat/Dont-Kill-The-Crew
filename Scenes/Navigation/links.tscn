@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://dq10adfbycxpt"]
+
+[node name="Links" type="Node2D"]
+visible = false
+
+[node name="Cafe" type="Node2D" parent="."]
+
+[node name="ConnectCafeUpper" type="NavigationLink2D" parent="Cafe"]
+position = Vector2(42, -36)
+start_position = Vector2(102, 118)
+end_position = Vector2(102, 148)
+
+[node name="ConnectCafeLower" type="NavigationLink2D" parent="Cafe"]
+position = Vector2(42, 16)
+start_position = Vector2(102, 128)
+end_position = Vector2(102, 160)
+
+[node name="ConnectCafeLeft" type="NavigationLink2D" parent="Cafe"]
+start_position = Vector2(122, 128)
+end_position = Vector2(100, 128)
+
+[node name="ConnectCafeRight" type="NavigationLink2D" parent="Cafe"]
+position = Vector2(68, 0)
+start_position = Vector2(120, 128)
+end_position = Vector2(98, 128)
+
+[node name="ConnectLeft" type="Node2D" parent="."]
+
+[node name="ConnectLeft1" type="NavigationLink2D" parent="ConnectLeft"]
+position = Vector2(-2, 0)
+start_position = Vector2(102, 128)
+end_position = Vector2(102, 176)
+
+[node name="ConnectLeft2" type="NavigationLink2D" parent="ConnectLeft"]
+position = Vector2(-2, -20)
+start_position = Vector2(102, 102)
+end_position = Vector2(102, 148)
+
+[node name="ConnectLeft3" type="NavigationLink2D" parent="ConnectLeft"]
+position = Vector2(20, 28)
+start_position = Vector2(80, 148)
+end_position = Vector2(124, 148)
+
+[node name="ConnectLeft4" type="NavigationLink2D" parent="ConnectLeft"]
+position = Vector2(20, -66)
+start_position = Vector2(80, 148)
+end_position = Vector2(124, 148)
+
+[node name="ConnectRight" type="Node2D" parent="."]
+
+[node name="ConnectRight1" type="NavigationLink2D" parent="ConnectRight"]
+position = Vector2(90, 0)
+start_position = Vector2(98, 128)
+end_position = Vector2(98, 146)
+
+[node name="ConnectRight2" type="NavigationLink2D" parent="ConnectRight"]
+position = Vector2(90, -18)
+start_position = Vector2(98, 100)
+end_position = Vector2(98, 146)
+
+[node name="ConnectRight3" type="NavigationLink2D" parent="ConnectRight"]
+position = Vector2(64, 28)
+start_position = Vector2(80, 148)
+end_position = Vector2(112, 148)
+
+[node name="ConnectRight4" type="NavigationLink2D" parent="ConnectRight"]
+position = Vector2(64, -66)
+start_position = Vector2(80, 148)
+end_position = Vector2(124, 148)
+
+[node name="Cryo" type="Node2D" parent="."]
+
+[node name="ConnectCryoUpper" type="NavigationLink2D" parent="Cryo"]
+position = Vector2(42, -68)
+start_position = Vector2(102, 128)
+end_position = Vector2(102, 150)
+
+[node name="ConnectCryoLower" type="NavigationLink2D" parent="Cryo"]
+position = Vector2(42, 48)
+start_position = Vector2(102, 128)
+end_position = Vector2(102, 146)
+
+[node name="Engines" type="Node2D" parent="."]
+
+[node name="ConnectEngineUpper" type="NavigationLink2D" parent="Engines"]
+position = Vector2(-26, -20)
+start_position = Vector2(102, 124)
+end_position = Vector2(102, 148)
+
+[node name="ConnectEngineLower" type="NavigationLink2D" parent="Engines"]
+position = Vector2(-26, 4)
+start_position = Vector2(102, 124)
+end_position = Vector2(102, 148)
+
+[node name="ConnectEngineCenter" type="NavigationLink2D" parent="Engines"]
+position = Vector2(-12, -20)
+start_position = Vector2(88, 148)
+end_position = Vector2(112, 148)
+
+[node name="ConnectBridge" type="NavigationLink2D" parent="."]
+position = Vector2(96, -20)
+start_position = Vector2(92, 148)
+end_position = Vector2(132, 148)
+
+[node name="ConnectMxBay" type="NavigationLink2D" parent="."]
+position = Vector2(-2, 48)
+start_position = Vector2(102, 128)
+end_position = Vector2(102, 146)
+
+[node name="ConnectHoldingCell" type="NavigationLink2D" parent="."]
+position = Vector2(-2, -68)
+start_position = Vector2(102, 128)
+end_position = Vector2(102, 150)
+
+[node name="ConnectComms" type="NavigationLink2D" parent="."]
+position = Vector2(86, -68)
+start_position = Vector2(102, 128)
+end_position = Vector2(102, 150)
