@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://bseatnnpa6y5n"]
+
+[ext_resource type="Texture2D" uid="uid://b5tple0ux2bkd" path="res://root/assets/sprites/bg/SpaceBG.png" id="1_ckhmv"]
+[ext_resource type="Script" uid="uid://bltjrk41dtgru" path="res://root/scenes/Victory.gd" id="1_jienq"]
+[ext_resource type="FontFile" uid="uid://c4eu1kn67kihh" path="res://root/resources/fonts/PublicPixel.ttf" id="2_3oc5r"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_afp8v"]
+line_spacing = 1.0
+font = ExtResource("2_3oc5r")
+font_size = 8
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_io0p1"]
+bg_color = Color(0, 0, 0, 0.384314)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[node name="Victory" type="Node2D"]
+script = ExtResource("1_jienq")
+
+[node name="Victory" type="Camera2D" parent="."]
+
+[node name="SpaceBg" type="Sprite2D" parent="."]
+position = Vector2(550, 0)
+texture = ExtResource("1_ckhmv")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -28.0
+offset_top = -12.0
+offset_right = 28.0
+offset_bottom = 23.0
+text = "You did
+it!
+Crew is
+alive."
+label_settings = SubResource("LabelSettings_afp8v")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -28.0
+offset_top = -30.0
+offset_right = 20.0
+offset_bottom = -22.0
+theme_override_fonts/font = ExtResource("2_3oc5r")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_io0p1")
+text = "<-Menu"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

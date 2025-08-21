@@ -1,0 +1,245 @@
+[gd_scene load_steps=13 format=3 uid="uid://bdb5t73834mp"]
+
+[ext_resource type="Script" uid="uid://bpg810hxccd51" path="res://root/scripts/door.gd" id="1_p257r"]
+[ext_resource type="Texture2D" uid="uid://dt5ylkxexhuqm" path="res://root/assets/sprites/ship/doors.png" id="2_15oss"]
+[ext_resource type="AudioStream" uid="uid://b6tdounyy0xbq" path="res://root/assets/sfx/Tone2A_FourthOctaveUp.wav" id="3_jkck6"]
+[ext_resource type="AudioStream" uid="uid://6b1fy233f2ad" path="res://root/assets/sfx/Tone2A_FourthOctaveDown.wav" id="4_ujqjj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yti0a"]
+size = Vector2(20, 12)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hnpmb"]
+radius = 2.5
+height = 17.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bgvl5"]
+cull_mode = 2
+polygon = PackedVector2Array(-6.96194, 2, -6.96192, -2, 6.96192, -2, 6.96194, 2)
+
+[sub_resource type="Animation" id="Animation_ak7kf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/ColorRect:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(14, 4)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D/ColorRect:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-7, -2)]
+}
+
+[sub_resource type="Animation" id="Animation_y7imt"]
+resource_name = "close"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(6.5, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.0714286, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wm43x"]
+resource_name = "open"
+length = 0.33335
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(1.625, 0), Vector2(3.25, 0), Vector2(4.875, 0), Vector2(6.5, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(1, 1), Vector2(0.767857, 1), Vector2(0.535714, 1), Vector2(0.303571, 1), Vector2(0.0714286, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/ColorRect:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(14, 4), Vector2(10.5, 4), Vector2(7, 4), Vector2(3.5, 4), Vector2(0, 4)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D/ColorRect:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-7, -2), Vector2(-3.5, -2), Vector2(0, -2), Vector2(3.5, -2), Vector2(7, -2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_07o8q"]
+_data = {
+&"RESET": SubResource("Animation_ak7kf"),
+&"close": SubResource("Animation_y7imt"),
+&"open": SubResource("Animation_wm43x")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cjiix"]
+radius = 40.1995
+
+[node name="Door" type="Node2D" groups=["Doors"]]
+script = ExtResource("1_p257r")
+
+[node name="ClickArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea"]
+visible = false
+shape = SubResource("RectangleShape2D_yti0a")
+
+[node name="CrewArea" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CrewArea"]
+visible = false
+position = Vector2(-0.5, -0.5)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_hnpmb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+clip_children = 2
+texture = ExtResource("2_15oss")
+region_enabled = true
+region_rect = Rect2(93, 69, 14, 4)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite2D"]
+show_behind_parent = true
+scale = Vector2(1.00547, 1)
+occluder = SubResource("OccluderPolygon2D_bgvl5")
+
+[node name="ColorRect" type="ColorRect" parent="Sprite2D"]
+modulate = Color(1, 1, 1, 0.27451)
+clip_children = 2
+offset_left = -7.0
+offset_top = -2.0
+offset_right = 7.0
+offset_bottom = 2.0
+mouse_filter = 1
+color = Color(0.556953, 0.556953, 0.556953, 1)
+
+[node name="LockStatus" type="ColorRect" parent="Sprite2D"]
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+mouse_filter = 1
+color = Color(0, 1, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_07o8q")
+}
+speed_scale = 1.5
+
+[node name="OpenSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_jkck6")
+volume_db = -10.0
+pitch_scale = 2.0
+attenuation = 2.73208
+
+[node name="CloseSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ujqjj")
+volume_db = -10.0
+pitch_scale = 2.0
+
+[node name="AutoCloseDelay" type="Timer" parent="."]
+process_callback = 0
+wait_time = 1.5
+one_shot = true
+
+[node name="LockAlertRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LockAlertRadius"]
+visible = false
+shape = SubResource("CircleShape2D_cjiix")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+visible = false
+radius = 4.0
+vertices = PackedVector2Array(-5, -1, 5, -1, 5, 1, -5, 1)
+
+[connection signal="input_event" from="ClickArea" to="." method="_on_click"]
+[connection signal="body_entered" from="CrewArea" to="." method="_on_rigid_body_2d_body_entered"]
+[connection signal="body_exited" from="CrewArea" to="." method="_on_rigid_body_2d_body_exited"]
+[connection signal="timeout" from="AutoCloseDelay" to="." method="_on_auto_close_delay_timeout"]

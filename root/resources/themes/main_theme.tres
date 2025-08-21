@@ -1,0 +1,22 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bq0tvgfce2vgh"]
+
+[ext_resource type="FontFile" uid="uid://c4eu1kn67kihh" path="res://root/resources/fonts/PublicPixel.ttf" id="1_2w685"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5kl64"]
+bg_color = Color(0.47451, 0.478431, 0.478431, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.388235, 0.368627, 1)
+corner_detail = 1
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+anti_aliasing = false
+
+[resource]
+default_font = ExtResource("1_2w685")
+default_font_size = 8
+TooltipLabel/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+TooltipLabel/fonts/font = ExtResource("1_2w685")
+TooltipPanel/styles/panel = SubResource("StyleBoxFlat_5kl64")

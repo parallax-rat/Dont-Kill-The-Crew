@@ -14,18 +14,22 @@ config/name="Don't Kill The Crew"
 config/description="Low Rez Game Jam 2024 Entry"
 config/version="0.1"
 config/tags=PackedStringArray("game_jam", "low_rez_jam")
-run/main_scene="res://Scenes/MasterScene.tscn"
+run/main_scene="res://root/scenes/MasterScene.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/use_filter=false
 boot_splash/image="res://Title_DKTC.png"
 config/icon="res://Title_DKTC.png"
 
+[audio]
+
+buses/default_bus_layout="res://root/resources/default_bus_layout.tres"
+
 [autoload]
 
-Settings="*res://Scripts/AutoLoad/Settings.gd"
-Scenes="*res://Scenes.gd"
-Crew="*res://crew.gd"
+Settings="*res://root/autoload/Settings.gd"
+Scenes="*res://root/scripts/Scenes.gd"
+Crew="*res://root/scripts/crew.gd"
 
 [display]
 
@@ -36,7 +40,7 @@ window/size/window_width_override=1024
 window/size/window_height_override=1024
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
-mouse_cursor/custom_image="res://Sprites/GUI/Cursor.png"
+mouse_cursor/custom_image="res://root/assets/sprites/gui/Cursor.png"
 mouse_cursor/tooltip_position_offset=Vector2(2, 2)
 
 [dotnet]
@@ -46,9 +50,7 @@ project/assembly_name="Low Rez Jam"
 [file_customization]
 
 folder_colors={
-"res://Scenes/": "red",
-"res://Scripts/": "green",
-"res://Sprites/": "yellow"
+"res://root/assets/sprites/": "yellow"
 }
 
 [global_group]

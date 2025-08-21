@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4yp2mdj5d42i"]
+
+[ext_resource type="PackedScene" uid="uid://da3p3lsyffnjk" path="res://root/scenes/crew/Crew.tscn" id="1_0nn0g"]
+
+[node name="Engineer" instance=ExtResource("1_0nn0g")]
+modulate = Color(1, 0.415686, 0, 1)
