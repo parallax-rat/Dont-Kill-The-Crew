@@ -1,11 +1,11 @@
 [gd_scene load_steps=26 format=3 uid="uid://cciwkt44rpu4e"]
 
-[ext_resource type="Script" path="res://Scripts/game.gd" id="1_ox14m"]
-[ext_resource type="Script" path="res://Scripts/camera_2d.gd" id="2_r7wak"]
+[ext_resource type="Script" uid="uid://di2b6pmjmpr7k" path="res://Scripts/game.gd" id="1_ox14m"]
+[ext_resource type="Script" uid="uid://ydvwprqyyisp" path="res://Scripts/camera_2d.gd" id="2_r7wak"]
 [ext_resource type="PackedScene" uid="uid://blpcm3y4w6ff3" path="res://Scenes/ship_map_64.tscn" id="3_6v3f5"]
 [ext_resource type="Texture2D" uid="uid://dohtuo8v6i0je" path="res://Sprites/Lights/32x32 textures (52).png" id="4_7mps6"]
 [ext_resource type="Texture2D" uid="uid://dy3xfuoctobgi" path="res://Sprites/Ship/ShipMapFull.png" id="4_tus1a"]
-[ext_resource type="Script" path="res://Scripts/env_light_fx.gd" id="6_jhlw8"]
+[ext_resource type="Script" uid="uid://nkklxo24gpi4" path="res://Scripts/env_light_fx.gd" id="6_jhlw8"]
 [ext_resource type="FontFile" uid="uid://c4eu1kn67kihh" path="res://Font/PublicPixel.ttf" id="6_jjf2f"]
 [ext_resource type="Texture2D" uid="uid://dccw8tnt56gg0" path="res://Sprites/Ship/hazlights.png" id="7_kdshj"]
 [ext_resource type="Texture2D" uid="uid://b81818huw0xtk" path="res://Sprites/Lights/32x32 textures (41).png" id="8_l2ywu"]
@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bey2bbj1fv6ux" path="res://Scenes/Lighting/light_occlusion.tscn" id="11_a4oq3"]
 [ext_resource type="PackedScene" uid="uid://csuftdn87ewbs" path="res://Scenes/Event.tscn" id="13_gt725"]
 [ext_resource type="PackedScene" uid="uid://da3p3lsyffnjk" path="res://Scenes/Crew/Crew.tscn" id="13_jfsqp"]
-[ext_resource type="Shader" path="res://Shaders/glitch.gdshader" id="14_5y0c7"]
+[ext_resource type="Shader" uid="uid://62mgpmlmrive" path="res://Shaders/glitch.gdshader" id="14_5y0c7"]
 [ext_resource type="PackedScene" uid="uid://bp25a4yut84n3" path="res://Scenes/Objects/fire.tscn" id="15_tqyip"]
 [ext_resource type="AudioStream" uid="uid://bi78uyda86lxk" path="res://Music/SL_Synth_80_Relax_B_100bpm.wav" id="16_adnvc"]
 
@@ -111,7 +111,6 @@ texture = ExtResource("4_tus1a")
 centered = false
 
 [node name="EnvironmentLighting" type="Node2D" parent="ShipMap256/Ship"]
-visible = false
 
 [node name="AmbientLight" type="CanvasModulate" parent="ShipMap256/Ship/EnvironmentLighting"]
 visible = false

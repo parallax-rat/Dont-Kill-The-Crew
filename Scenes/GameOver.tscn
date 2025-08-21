@@ -1,7 +1,7 @@
 [gd_scene load_steps=66 format=3 uid="uid://p3cs7cruqs2l"]
 
 [ext_resource type="Texture2D" uid="uid://dvr0mkiji0e37" path="res://Sprites/Units/AI/Loss_Ani.png" id="1_lyfgq"]
-[ext_resource type="Script" path="res://Scenes/game_over.gd" id="2_1auxs"]
+[ext_resource type="Script" uid="uid://70byfinr50tj" path="res://Scenes/game_over.gd" id="2_1auxs"]
 [ext_resource type="FontFile" uid="uid://c4eu1kn67kihh" path="res://Font/PublicPixel.ttf" id="3_eqfo3"]
 [ext_resource type="AudioStream" uid="uid://bu3uwt3jicb70" path="res://Music/DKTC_Loss.wav" id="3_nifb6"]
 
@@ -414,8 +414,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lv4yw"]
 _data = {
-"RESET": SubResource("Animation_yjjmo"),
-"end": SubResource("Animation_to6om")
+&"RESET": SubResource("Animation_yjjmo"),
+&"end": SubResource("Animation_to6om")
 }
 
 [sub_resource type="Gradient" id="Gradient_c1swk"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=36 format=3 uid="uid://da3p3lsyffnjk"]
 
-[ext_resource type="Script" path="res://Scripts/crewmate.gd" id="1_bfr18"]
+[ext_resource type="Script" uid="uid://b5ae5itgklnl1" path="res://Scripts/crewmate.gd" id="1_bfr18"]
 [ext_resource type="Texture2D" uid="uid://2wb3tv4bcfbj" path="res://Sprites/Lights/32x32_Arcane_0.png" id="2_f7y1v"]
 [ext_resource type="Texture2D" uid="uid://d27sfgnc1hy2l" path="res://Sprites/Units/Crew/Crew_AllAnims.png" id="3_qxvv6"]
 [ext_resource type="Texture2D" uid="uid://bv48ws3iugwkt" path="res://Sprites/Units/idle.png" id="4_c2isl"]
@@ -207,12 +207,12 @@ animations = [{
 radius = 4.0
 
 [sub_resource type="Curve" id="Curve_k6j2f"]
-max_value = 100.0
+_limits = [0.0, 100.0, 0.0, 1.0]
 _data = [Vector2(0.253555, 1.79856), 0.0, 46.9853, 0, 0, Vector2(0.988152, 100), -3.0835, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_ufyr4"]
-max_value = 2.0
+_limits = [0.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0.632701, 1.07644), 0.0, -0.308341, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 

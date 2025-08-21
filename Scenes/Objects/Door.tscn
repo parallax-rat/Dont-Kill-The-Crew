@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://bdb5t73834mp"]
 
-[ext_resource type="Script" path="res://Scripts/door.gd" id="1_p257r"]
+[ext_resource type="Script" uid="uid://bpg810hxccd51" path="res://Scripts/door.gd" id="1_p257r"]
 [ext_resource type="Texture2D" uid="uid://dt5ylkxexhuqm" path="res://Sprites/Ship/doors.png" id="2_15oss"]
 [ext_resource type="AudioStream" uid="uid://b6tdounyy0xbq" path="res://SFX/Tone2A_FourthOctaveUp.wav" id="3_jkck6"]
 [ext_resource type="AudioStream" uid="uid://6b1fy233f2ad" path="res://SFX/Tone2A_FourthOctaveDown.wav" id="4_ujqjj"]
@@ -151,9 +151,9 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_07o8q"]
 _data = {
-"RESET": SubResource("Animation_ak7kf"),
-"close": SubResource("Animation_y7imt"),
-"open": SubResource("Animation_wm43x")
+&"RESET": SubResource("Animation_ak7kf"),
+&"close": SubResource("Animation_y7imt"),
+&"open": SubResource("Animation_wm43x")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cjiix"]

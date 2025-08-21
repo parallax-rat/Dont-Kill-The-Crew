@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://blpcm3y4w6ff3"]
 
 [ext_resource type="Texture2D" uid="uid://cgknhb0k6t7wb" path="res://Sprites/Ship/bg.png" id="1_kufni"]
-[ext_resource type="Script" path="res://Scripts/hover_flash.gd" id="1_xhoip"]
+[ext_resource type="Script" uid="uid://dnnd083p5feb5" path="res://Scripts/hover_flash.gd" id="1_xhoip"]
 [ext_resource type="Texture2D" uid="uid://cvyv5q25hodki" path="res://Sprites/Ship/ShipMapFull64.png" id="2_kq7fj"]
 
 [sub_resource type="Gradient" id="Gradient_8ura2"]
@@ -49,8 +49,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2xjsd"]
 _data = {
-"RESET": SubResource("Animation_35ia4"),
-"highlight": SubResource("Animation_llsup")
+&"RESET": SubResource("Animation_35ia4"),
+&"highlight": SubResource("Animation_llsup")
 }
 
 [node name="ShipMap64" type="Node2D"]

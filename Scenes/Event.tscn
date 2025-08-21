@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://csuftdn87ewbs"]
 
-[ext_resource type="Script" path="res://Scenes/event.gd" id="1_wyarc"]
+[ext_resource type="Script" uid="uid://cof22lnl26hpp" path="res://Scenes/event.gd" id="1_wyarc"]
 [ext_resource type="Texture2D" uid="uid://tcvod3euvrke" path="res://icon.svg" id="2_0wlnh"]
 
 [node name="Event" type="Marker2D" groups=["Events"]]

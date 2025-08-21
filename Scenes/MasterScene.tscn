@@ -1,9 +1,9 @@
 [gd_scene load_steps=52 format=4 uid="uid://drf00euunk28e"]
 
-[ext_resource type="Script" path="res://Scripts/main_game_root.gd" id="1_r4rf2"]
+[ext_resource type="Script" uid="uid://cp0j8vaa1w23f" path="res://Scripts/main_game_root.gd" id="1_r4rf2"]
 [ext_resource type="PackedScene" uid="uid://c76sf0n368gv4" path="res://Scenes/MainMenu.tscn" id="2_nqvhn"]
 [ext_resource type="FontFile" uid="uid://c4eu1kn67kihh" path="res://Font/PublicPixel.ttf" id="5_0qwkx"]
-[ext_resource type="Script" path="res://Scripts/pause.gd" id="6_kgebu"]
+[ext_resource type="Script" uid="uid://wtcerlj1dc6k" path="res://Scripts/pause.gd" id="6_kgebu"]
 [ext_resource type="Texture2D" uid="uid://cvyv5q25hodki" path="res://Sprites/Ship/ShipMapFull64.png" id="7_jo1f3"]
 [ext_resource type="Texture2D" uid="uid://pxpol64cl1vw" path="res://Sprites/GUI/HUD.png" id="8_yesbj"]
 [ext_resource type="Theme" uid="uid://bq0tvgfce2vgh" path="res://Themes/main_theme.tres" id="9_max18"]
@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://crs12nuhp2j5m" path="res://Sprites/GUI/buttons.png" id="13_yy8ps"]
 [ext_resource type="AudioStream" uid="uid://dd2mpwuspqhtp" path="res://SFX/UI/JDSherbert - Pixel UI SFX Pack - Cursor 1 (Sine).ogg" id="14_3ki5f"]
 [ext_resource type="Texture2D" uid="uid://bfv2u87lnjd6t" path="res://Sprites/GUI/bar_front.png" id="15_lwm4y"]
-[ext_resource type="Shader" path="res://Shaders/crt_final.gdshader" id="16_dk4ul"]
+[ext_resource type="Shader" uid="uid://bwo5o3ds0qvob" path="res://Shaders/crt_final.gdshader" id="16_dk4ul"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bal1e"]
 font = ExtResource("5_0qwkx")

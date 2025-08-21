@@ -1,8 +1,8 @@
 [gd_scene load_steps=47 format=3 uid="uid://c76sf0n368gv4"]
 
-[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_hj8pw"]
+[ext_resource type="Script" uid="uid://dmcww36kyunxh" path="res://Scripts/main_menu.gd" id="1_hj8pw"]
 [ext_resource type="Texture2D" uid="uid://do36xswi10w03" path="res://Title_DKTC.png" id="1_kyn6x"]
-[ext_resource type="Script" path="res://Scripts/crewmate.gd" id="3_mua5f"]
+[ext_resource type="Script" uid="uid://b5ae5itgklnl1" path="res://Scripts/crewmate.gd" id="3_mua5f"]
 [ext_resource type="AudioStream" uid="uid://csnr31th2vdse" path="res://Music/SL_AW_Sound_Effect_Lost.wav" id="4_2clfw"]
 [ext_resource type="Texture2D" uid="uid://2wb3tv4bcfbj" path="res://Sprites/Lights/32x32_Arcane_0.png" id="4_n0nae"]
 [ext_resource type="Texture2D" uid="uid://d27sfgnc1hy2l" path="res://Sprites/Units/Crew/Crew_AllAnims.png" id="5_rge2s"]
@@ -226,12 +226,12 @@ animations = [{
 radius = 4.0
 
 [sub_resource type="Curve" id="Curve_k6j2f"]
-max_value = 100.0
+_limits = [0.0, 100.0, 0.0, 1.0]
 _data = [Vector2(0.253555, 1.79856), 0.0, 46.9853, 0, 0, Vector2(0.988152, 100), -3.0835, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_ufyr4"]
-max_value = 2.0
+_limits = [0.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0.632701, 1.07644), 0.0, -0.308341, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -503,8 +503,8 @@ tracks/9/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k5e6v"]
 _data = {
-"MainMenuBegin": SubResource("Animation_erar0"),
-"RESET": SubResource("Animation_vx4ix")
+&"MainMenuBegin": SubResource("Animation_erar0"),
+&"RESET": SubResource("Animation_vx4ix")
 }
 
 [node name="Menu" type="Node2D" node_paths=PackedStringArray("crewmate", "music", "music_to_begin") groups=["Game Scenes"]]

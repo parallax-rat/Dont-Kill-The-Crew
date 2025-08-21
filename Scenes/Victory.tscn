@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bseatnnpa6y5n"]
 
 [ext_resource type="Texture2D" uid="uid://b5tple0ux2bkd" path="res://Sprites/Background/SpaceBG.png" id="1_ckhmv"]
-[ext_resource type="Script" path="res://Scenes/Victory.gd" id="1_jienq"]
+[ext_resource type="Script" uid="uid://bltjrk41dtgru" path="res://Scenes/Victory.gd" id="1_jienq"]
 [ext_resource type="FontFile" uid="uid://c4eu1kn67kihh" path="res://Font/PublicPixel.ttf" id="2_3oc5r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_afp8v"]
