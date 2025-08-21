@@ -1,47 +1,29 @@
-[gd_scene load_steps=26 format=3 uid="uid://cciwkt44rpu4e"]
+[gd_scene load_steps=20 format=3 uid="uid://cciwkt44rpu4e"]
 
-[ext_resource type="Script" uid="uid://di2b6pmjmpr7k" path="res://root/scripts/game.gd" id="1_ox14m"]
-[ext_resource type="Script" uid="uid://ydvwprqyyisp" path="res://root/scripts/camera_2d.gd" id="2_r7wak"]
-[ext_resource type="PackedScene" uid="uid://blpcm3y4w6ff3" path="res://root/scenes/ship_map_64.tscn" id="3_6v3f5"]
 [ext_resource type="Texture2D" uid="uid://dohtuo8v6i0je" path="res://root/assets/sprites/light/32x32 textures (52).png" id="4_7mps6"]
 [ext_resource type="Texture2D" uid="uid://dy3xfuoctobgi" path="res://root/assets/sprites/ship/ShipMapFull.png" id="4_tus1a"]
 [ext_resource type="Script" uid="uid://nkklxo24gpi4" path="res://root/scripts/env_light_fx.gd" id="6_jhlw8"]
-[ext_resource type="FontFile" uid="uid://c4eu1kn67kihh" path="res://root/resources/fonts/PublicPixel.ttf" id="6_jjf2f"]
 [ext_resource type="Texture2D" uid="uid://dccw8tnt56gg0" path="res://root/assets/sprites/ship/hazlights.png" id="7_kdshj"]
 [ext_resource type="Texture2D" uid="uid://b81818huw0xtk" path="res://root/assets/sprites/light/32x32 textures (41).png" id="8_l2ywu"]
 [ext_resource type="PackedScene" uid="uid://bdb5t73834mp" path="res://root/scenes/objects/Door.tscn" id="8_v8lmt"]
 [ext_resource type="Texture2D" uid="uid://0bhlb7xbmpd7" path="res://root/assets/sprites/light/32x32 textures (17).png" id="10_lpakt"]
 [ext_resource type="PackedScene" uid="uid://bey2bbj1fv6ux" path="res://root/scenes/lighting/light_occlusion.tscn" id="11_a4oq3"]
-[ext_resource type="PackedScene" uid="uid://csuftdn87ewbs" path="res://root/scenes/Event.tscn" id="13_gt725"]
-[ext_resource type="PackedScene" uid="uid://da3p3lsyffnjk" path="res://root/scenes/crew/Crew.tscn" id="13_jfsqp"]
-[ext_resource type="Shader" uid="uid://62mgpmlmrive" path="res://root/shaders/glitch.gdshader" id="14_5y0c7"]
-[ext_resource type="PackedScene" uid="uid://bp25a4yut84n3" path="res://root/scenes/objects/fire.tscn" id="15_tqyip"]
+[ext_resource type="Texture2D" uid="uid://ykafevb6qvv4" path="res://root/assets/sprites/bg/parallax/parallax-space-backgound.png" id="11_ukqnq"]
+[ext_resource type="Texture2D" uid="uid://k22wf0p284rm" path="res://root/assets/sprites/bg/parallax/parallax-space-stars.png" id="12_53cuo"]
+[ext_resource type="Texture2D" uid="uid://brvhtrdhhyc5k" path="res://root/assets/sprites/bg/parallax/parallax-space-far-planets.png" id="13_0mcee"]
+[ext_resource type="Script" uid="uid://bghaddibpt6f1" path="res://addons/crt/crt.gd" id="14_ukqnq"]
+[ext_resource type="Texture2D" uid="uid://ce7wg41f8ry8q" path="res://root/assets/sprites/bg/parallax/parallax-space-ring-planet.png" id="14_vaq1e"]
+[ext_resource type="Script" uid="uid://ydvwprqyyisp" path="res://root/scripts/camera_2d.gd" id="15_53cuo"]
 [ext_resource type="AudioStream" uid="uid://bi78uyda86lxk" path="res://root/assets/music/SL_Synth_80_Relax_B_100bpm.wav" id="16_adnvc"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_agdgq"]
-shader = ExtResource("14_5y0c7")
-shader_parameter/shake_power = 0.08
-shader_parameter/shake_rate = 0.1
-shader_parameter/shake_speed = 5.0
-shader_parameter/shake_block_size = 128.0
-shader_parameter/shake_color_rate = 0.03
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_rcgc3"]
-texture_filter = 1
 
 [sub_resource type="Environment" id="Environment_glgtt"]
 background_mode = 3
 tonemap_mode = 2
-glow_intensity = 0.9
-glow_bloom = 0.05
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.0
+glow_bloom = 0.5
 adjustment_enabled = true
-
-[sub_resource type="Gradient" id="Gradient_ke25l"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_llenf"]
-gradient = SubResource("Gradient_ke25l")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ft6ot"]
 load_path = "res://.godot/imported/32x32 textures (52).png-cc0cd82a9c821d306ac4b15e8cd937ab.ctex"
@@ -60,34 +42,8 @@ agent_radius = 4.0
 texture_filter = 1
 texture_repeat = 3
 scale = Vector2(4, 4)
-script = ExtResource("1_ox14m")
 
-[node name="Game" type="Camera2D" parent="." groups=["Cameras"]]
-texture_filter = 1
-position = Vector2(144, 128)
-limit_left = 0
-limit_top = 0
-limit_right = 256
-limit_bottom = 256
-limit_smoothed = true
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
-editor_draw_limits = true
-script = ExtResource("2_r7wak")
-drag_speed = 100
-
-[node name="GlitchShader" type="Sprite2D" parent="Game"]
-unique_name_in_owner = true
-visible = false
-modulate = Color(1, 1, 1, 0.101961)
-material = SubResource("ShaderMaterial_agdgq")
-position = Vector2(-64, -64)
-scale = Vector2(128, 128)
-texture = SubResource("CanvasTexture_rcgc3")
-
-[node name="ProgressSFX" type="AudioStreamPlayer" parent="."]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_adnvc")
 volume_db = -31.558
 pitch_scale = 0.76
@@ -96,101 +52,117 @@ autoplay = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_glgtt")
 
-[node name="BG" type="Sprite2D" parent="."]
-z_index = -5
-position = Vector2(183.5, -328)
-scale = Vector2(4.24609, 905)
-texture = SubResource("GradientTexture1D_llenf")
+[node name="Crew" type="Node" parent="."]
 
-[node name="ShipMap256" type="Node2D" parent="."]
+[node name="CanvasShip" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
-[node name="Ship" type="Node2D" parent="ShipMap256"]
+[node name="AmbientLight" type="CanvasModulate" parent="CanvasShip"]
+position = Vector2(448, 24)
+scale = Vector2(4, 4)
+color = Color(0.0627451, 0.0627451, 0.0627451, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="ShipMap256/Ship"]
-texture = ExtResource("4_tus1a")
-centered = false
+[node name="Ship" type="Node2D" parent="CanvasShip"]
+position = Vector2(448, 24)
+scale = Vector2(4, 4)
 
-[node name="EnvironmentLighting" type="Node2D" parent="ShipMap256/Ship"]
+[node name="EnvironmentLighting" type="Node2D" parent="CanvasShip/Ship"]
 
-[node name="AmbientLight" type="CanvasModulate" parent="ShipMap256/Ship/EnvironmentLighting"]
-visible = false
-color = Color(0.0646965, 0.0646965, 0.0646965, 1)
-
-[node name="LightOcclusion" parent="ShipMap256/Ship/EnvironmentLighting" instance=ExtResource("11_a4oq3")]
+[node name="LightOcclusion" parent="CanvasShip/Ship/EnvironmentLighting" instance=ExtResource("11_a4oq3")]
 visible = true
 
-[node name="BridgeLight" type="PointLight2D" parent="ShipMap256/Ship/EnvironmentLighting"]
+[node name="BridgeLight" type="PointLight2D" parent="CanvasShip/Ship/EnvironmentLighting"]
 position = Vector2(223.939, 128)
 scale = Vector2(0.976593, 1.00233)
 color = Color(0.587909, 1, 0.995846, 1)
 energy = 2.2
+range_layer_min = 1
+range_layer_max = 1
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 0.756863)
 texture = ExtResource("4_7mps6")
 texture_scale = 2.3
 
-[node name="ConnectionRooms" type="Node2D" parent="ShipMap256/Ship/EnvironmentLighting"]
+[node name="ConnectionRooms" type="Node2D" parent="CanvasShip/Ship/EnvironmentLighting"]
 
-[node name="PointLight2D2" type="PointLight2D" parent="ShipMap256/Ship/EnvironmentLighting/ConnectionRooms"]
+[node name="PointLight2D2" type="PointLight2D" parent="CanvasShip/Ship/EnvironmentLighting/ConnectionRooms"]
 position = Vector2(103, 94.5)
 scale = Vector2(1, 1.17188)
 energy = 0.7
+range_layer_min = 1
+range_layer_max = 1
 shadow_enabled = true
 texture = ExtResource("4_7mps6")
 texture_scale = 1.6
 
-[node name="PointLight2D4" type="PointLight2D" parent="ShipMap256/Ship/EnvironmentLighting/ConnectionRooms"]
-position = Vector2(188, 92)
+[node name="PointLight2D4" type="PointLight2D" parent="CanvasShip/Ship/EnvironmentLighting/ConnectionRooms"]
+position = Vector2(188, 92.25)
 energy = 0.5
+range_layer_min = 1
+range_layer_max = 1
 shadow_enabled = true
 texture = SubResource("CompressedTexture2D_ft6ot")
 texture_scale = 1.6
 
-[node name="PointLight2D6" type="PointLight2D" parent="ShipMap256/Ship/EnvironmentLighting/ConnectionRooms"]
+[node name="PointLight2D6" type="PointLight2D" parent="CanvasShip/Ship/EnvironmentLighting/ConnectionRooms"]
 position = Vector2(100, 160)
 scale = Vector2(1, 1.28906)
 energy = 0.5
+range_layer_min = 1
+range_layer_max = 1
 shadow_enabled = true
 texture = ExtResource("4_7mps6")
 texture_scale = 1.6
 
-[node name="PointLight2D8" type="PointLight2D" parent="ShipMap256/Ship/EnvironmentLighting/ConnectionRooms"]
+[node name="PointLight2D8" type="PointLight2D" parent="CanvasShip/Ship/EnvironmentLighting/ConnectionRooms"]
 position = Vector2(144, 168)
 energy = 0.5
+range_layer_min = 1
+range_layer_max = 1
 shadow_enabled = true
 texture = ExtResource("4_7mps6")
 texture_scale = 1.6
 
-[node name="PointLight2D5" type="PointLight2D" parent="ShipMap256/Ship/EnvironmentLighting/ConnectionRooms"]
+[node name="PointLight2D5" type="PointLight2D" parent="CanvasShip/Ship/EnvironmentLighting/ConnectionRooms"]
 position = Vector2(144, 88)
 energy = 0.5
+range_layer_min = 1
+range_layer_max = 1
 shadow_enabled = true
 texture = ExtResource("4_7mps6")
 texture_scale = 1.6
 
-[node name="PointLight2D3" type="PointLight2D" parent="ShipMap256/Ship/EnvironmentLighting/ConnectionRooms"]
+[node name="PointLight2D3" type="PointLight2D" parent="CanvasShip/Ship/EnvironmentLighting/ConnectionRooms"]
 position = Vector2(142, 128)
 scale = Vector2(1.79688, 1.40625)
+range_layer_min = 1
+range_layer_max = 1
 shadow_enabled = true
 texture = ExtResource("4_7mps6")
 texture_scale = 1.6
 
-[node name="PointLight2D" type="PointLight2D" parent="ShipMap256/Ship/EnvironmentLighting/ConnectionRooms"]
+[node name="PointLight2D" type="PointLight2D" parent="CanvasShip/Ship/EnvironmentLighting/ConnectionRooms"]
 position = Vector2(100, 128)
 energy = 0.5
+range_layer_min = 1
+range_layer_max = 1
 texture = ExtResource("4_7mps6")
 
-[node name="PointLight2D7" type="PointLight2D" parent="ShipMap256/Ship/EnvironmentLighting/ConnectionRooms"]
+[node name="PointLight2D7" type="PointLight2D" parent="CanvasShip/Ship/EnvironmentLighting/ConnectionRooms"]
 position = Vector2(187, 128)
 energy = 0.5
+range_layer_min = 1
+range_layer_max = 1
 texture = ExtResource("4_7mps6")
 
-[node name="Engines" type="Node2D" parent="ShipMap256/Ship/EnvironmentLighting"]
+[node name="Engines" type="Node2D" parent="CanvasShip/Ship/EnvironmentLighting"]
 
-[node name="EngineNorth" type="PointLight2D" parent="ShipMap256/Ship/EnvironmentLighting/Engines"]
+[node name="EngineNorth" type="PointLight2D" parent="CanvasShip/Ship/EnvironmentLighting/Engines"]
 position = Vector2(68, 92)
 color = Color(1, 0.376471, 0.184314, 1)
 energy = 2.0
+range_layer_min = 1
+range_layer_max = 1
 shadow_enabled = true
 texture = SubResource("CompressedTexture2D_hbm7s")
 texture_scale = 1.5
@@ -199,10 +171,12 @@ energy_min = 1.0
 energy_max = 3.0
 anim_duration = 2.0
 
-[node name="EngineSouth" type="PointLight2D" parent="ShipMap256/Ship/EnvironmentLighting/Engines"]
+[node name="EngineSouth" type="PointLight2D" parent="CanvasShip/Ship/EnvironmentLighting/Engines"]
 position = Vector2(68, 164)
 color = Color(1, 0.376471, 0.184314, 1)
 energy = 2.0
+range_layer_min = 1
+range_layer_max = 1
 shadow_enabled = true
 texture = SubResource("CompressedTexture2D_hbm7s")
 texture_scale = 1.5
@@ -211,31 +185,37 @@ energy_min = 1.0
 energy_max = 3.0
 anim_duration = 2.0
 
-[node name="PointLight2D" type="PointLight2D" parent="ShipMap256/Ship/EnvironmentLighting/Engines"]
+[node name="PointLight2D" type="PointLight2D" parent="CanvasShip/Ship/EnvironmentLighting/Engines"]
 position = Vector2(72.5155, 128.8)
 scale = Vector2(1.71778, 1.04348)
 color = Color(0.556273, 1, 0.99686, 1)
 energy = 1.5
+range_layer_min = 1
+range_layer_max = 1
 shadow_enabled = true
 texture = ExtResource("4_7mps6")
 
-[node name="EngineCenter" type="PointLight2D" parent="ShipMap256/Ship/EnvironmentLighting/Engines"]
+[node name="EngineCenter" type="PointLight2D" parent="CanvasShip/Ship/EnvironmentLighting/Engines"]
 position = Vector2(57, 128)
 color = Color(0.225522, 0.9937, 1, 1)
 energy = 3.0
+range_layer_min = 1
+range_layer_max = 1
 shadow_enabled = true
 texture = ExtResource("10_lpakt")
 texture_scale = 0.7
 script = ExtResource("6_jhlw8")
 
-[node name="Cryo" type="Node2D" parent="ShipMap256/Ship/EnvironmentLighting"]
+[node name="Cryo" type="Node2D" parent="CanvasShip/Ship/EnvironmentLighting"]
 
-[node name="CryoNorth" type="PointLight2D" parent="ShipMap256/Ship/EnvironmentLighting/Cryo"]
+[node name="CryoNorth" type="PointLight2D" parent="CanvasShip/Ship/EnvironmentLighting/Cryo"]
 texture_filter = 1
 position = Vector2(144, 41.7499)
 scale = Vector2(1, 1.57031)
 color = Color(0.607843, 1, 1, 1)
 energy = 1.5
+range_layer_min = 1
+range_layer_max = 1
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 0.290196)
 texture = ExtResource("4_7mps6")
@@ -244,12 +224,14 @@ script = ExtResource("6_jhlw8")
 energy_max = 2.0
 anim_duration = 2.0
 
-[node name="CryoSouth" type="PointLight2D" parent="ShipMap256/Ship/EnvironmentLighting/Cryo"]
+[node name="CryoSouth" type="PointLight2D" parent="CanvasShip/Ship/EnvironmentLighting/Cryo"]
 texture_filter = 1
 position = Vector2(144, 215.25)
 scale = Vector2(1, 1.53907)
 color = Color(0.607843, 1, 1, 1)
 energy = 1.5
+range_layer_min = 1
+range_layer_max = 1
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 0.290196)
 texture = ExtResource("4_7mps6")
@@ -258,615 +240,283 @@ script = ExtResource("6_jhlw8")
 energy_max = 2.0
 anim_duration = 2.0
 
-[node name="CargoHold" type="Node2D" parent="ShipMap256/Ship/EnvironmentLighting"]
+[node name="CargoHold" type="Node2D" parent="CanvasShip/Ship/EnvironmentLighting"]
 
-[node name="PointLight2D7" type="PointLight2D" parent="ShipMap256/Ship/EnvironmentLighting/CargoHold"]
+[node name="PointLight2D7" type="PointLight2D" parent="CanvasShip/Ship/EnvironmentLighting/CargoHold"]
 position = Vector2(184, 178)
 scale = Vector2(0.4375, 0.90625)
+range_layer_min = 1
+range_layer_max = 1
 shadow_enabled = true
 texture = ExtResource("4_7mps6")
 texture_scale = 4.0
 
-[node name="MxBay" type="Node2D" parent="ShipMap256/Ship/EnvironmentLighting"]
+[node name="MxBay" type="Node2D" parent="CanvasShip/Ship/EnvironmentLighting"]
 
-[node name="HazLight2" type="Node2D" parent="ShipMap256/Ship/EnvironmentLighting/MxBay"]
+[node name="HazLight2" type="Node2D" parent="CanvasShip/Ship/EnvironmentLighting/MxBay"]
 position = Vector2(102, 220)
 rotation = 3.14159
 
-[node name="Area2D" type="Area2D" parent="ShipMap256/Ship/EnvironmentLighting/MxBay/HazLight2"]
+[node name="Area2D" type="Area2D" parent="CanvasShip/Ship/EnvironmentLighting/MxBay/HazLight2"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ShipMap256/Ship/EnvironmentLighting/MxBay/HazLight2/Area2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CanvasShip/Ship/EnvironmentLighting/MxBay/HazLight2/Area2D"]
 visible = false
 polygon = PackedVector2Array(0, 3, 1, 3, 1, 4, 6, 4, 6, 3, 7, 3, 7, 0, 0, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ShipMap256/Ship/EnvironmentLighting/MxBay/HazLight2"]
+[node name="Sprite2D" type="Sprite2D" parent="CanvasShip/Ship/EnvironmentLighting/MxBay/HazLight2"]
 texture = ExtResource("7_kdshj")
 centered = false
 region_enabled = true
 region_rect = Rect2(93, 35, 7, 4)
 
-[node name="PointLight2D" type="PointLight2D" parent="ShipMap256/Ship/EnvironmentLighting/MxBay/HazLight2"]
+[node name="PointLight2D" type="PointLight2D" parent="CanvasShip/Ship/EnvironmentLighting/MxBay/HazLight2"]
 position = Vector2(3.5, 2.5)
 scale = Vector2(0.78125, 0.78125)
 color = Color(0.889889, 0, 0.183702, 1)
+range_layer_min = 1
+range_layer_max = 1
 texture = ExtResource("8_l2ywu")
 
-[node name="PointLight2D2" type="PointLight2D" parent="ShipMap256/Ship/EnvironmentLighting/MxBay/HazLight2/PointLight2D"]
+[node name="PointLight2D2" type="PointLight2D" parent="CanvasShip/Ship/EnvironmentLighting/MxBay/HazLight2/PointLight2D"]
 position = Vector2(0.568727, 23.5067)
 scale = Vector2(0.698579, 0.734215)
 color = Color(0.889889, 0, 0.183702, 1)
 energy = 0.6
+range_layer_min = 1
+range_layer_max = 1
 shadow_enabled = true
 texture = ExtResource("4_7mps6")
 texture_scale = 3.0
 
-[node name="HoldingCell" type="Node2D" parent="ShipMap256/Ship/EnvironmentLighting"]
+[node name="HoldingCell" type="Node2D" parent="CanvasShip/Ship/EnvironmentLighting"]
 
-[node name="HazLight" type="Node2D" parent="ShipMap256/Ship/EnvironmentLighting/HoldingCell"]
+[node name="HazLight" type="Node2D" parent="CanvasShip/Ship/EnvironmentLighting/HoldingCell"]
 position = Vector2(92, 36)
 
-[node name="Area2D" type="Area2D" parent="ShipMap256/Ship/EnvironmentLighting/HoldingCell/HazLight"]
+[node name="Area2D" type="Area2D" parent="CanvasShip/Ship/EnvironmentLighting/HoldingCell/HazLight"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ShipMap256/Ship/EnvironmentLighting/HoldingCell/HazLight/Area2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CanvasShip/Ship/EnvironmentLighting/HoldingCell/HazLight/Area2D"]
 visible = false
 polygon = PackedVector2Array(0, 3, 1, 3, 1, 4, 6, 4, 6, 3, 7, 3, 7, 0, 0, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ShipMap256/Ship/EnvironmentLighting/HoldingCell/HazLight"]
+[node name="Sprite2D" type="Sprite2D" parent="CanvasShip/Ship/EnvironmentLighting/HoldingCell/HazLight"]
 texture = ExtResource("7_kdshj")
 centered = false
 region_enabled = true
 region_rect = Rect2(93, 35, 7, 4)
 
-[node name="PointLight2D" type="PointLight2D" parent="ShipMap256/Ship/EnvironmentLighting/HoldingCell/HazLight"]
+[node name="PointLight2D" type="PointLight2D" parent="CanvasShip/Ship/EnvironmentLighting/HoldingCell/HazLight"]
 position = Vector2(3.5, 2.5)
 scale = Vector2(0.78125, 0.78125)
 color = Color(0.889889, 0, 0.183702, 1)
+range_layer_min = 1
+range_layer_max = 1
 shadow_enabled = true
 texture = ExtResource("8_l2ywu")
 
-[node name="PointLight2D2" type="PointLight2D" parent="ShipMap256/Ship/EnvironmentLighting/HoldingCell/HazLight/PointLight2D"]
+[node name="PointLight2D2" type="PointLight2D" parent="CanvasShip/Ship/EnvironmentLighting/HoldingCell/HazLight/PointLight2D"]
 position = Vector2(10.88, 14.72)
 scale = Vector2(0.533333, 0.906667)
 color = Color(0.889889, 0, 0.183702, 1)
 energy = 0.6
+range_layer_min = 1
+range_layer_max = 1
 shadow_enabled = true
 shadow_filter = 2
 texture = ExtResource("4_7mps6")
 texture_scale = 3.0
 
-[node name="Comms" type="Node2D" parent="ShipMap256/Ship/EnvironmentLighting"]
+[node name="Comms" type="Node2D" parent="CanvasShip/Ship/EnvironmentLighting"]
 
-[node name="PointLight2D7" type="PointLight2D" parent="ShipMap256/Ship/EnvironmentLighting/Comms"]
+[node name="PointLight2D7" type="PointLight2D" parent="CanvasShip/Ship/EnvironmentLighting/Comms"]
 position = Vector2(188, 55)
 color = Color(0.705882, 1, 1, 1)
 energy = 1.8
+range_layer_min = 1
+range_layer_max = 1
 shadow_enabled = true
 shadow_filter_smooth = 2.0
 texture = ExtResource("4_7mps6")
 texture_scale = 1.4
 
-[node name="Navigation" type="Node2D" parent="ShipMap256/Ship"]
+[node name="SpriteClip" type="Polygon2D" parent="CanvasShip/Ship"]
+clip_children = 1
+polygon = PackedVector2Array(1, 89, 6, 89, 6, 90, 13, 90, 13, 89, 20, 89, 20, 88, 24, 88, 24, 83, 58, 50, 68, 50, 87, 31, 98, 31, 123, 6, 165, 6, 231, 72, 237, 73, 237, 83, 232, 84, 232, 96, 243, 104, 247, 108, 249, 112, 251, 118, 252, 123, 252, 134, 251, 141, 248, 146, 244, 151, 240, 155, 234, 159, 230, 160, 228, 160, 228, 172, 237, 172, 238, 174, 238, 183, 230, 183, 164, 250, 124, 250, 100, 228, 88, 228, 69, 208, 60, 208, 24, 172, 24, 168, 20, 168, 20, 167, 13, 167, 13, 166, 6, 166, 6, 167, 1, 167, 1, 161, 5, 161, 5, 162, 13, 162, 13, 161, 15, 161, 15, 160, 24, 160, 24, 156, 36, 145, 36, 140, 32, 140, 28, 136, 28, 132, 21, 132, 21, 131, 10, 131, 10, 132, 3, 132, 3, 131, 1, 131, 1, 125, 3, 125, 3, 124, 10, 124, 10, 125, 21, 125, 21, 124, 28, 124, 28, 120, 33, 116, 36, 116, 36, 112, 24, 100, 24, 96, 15, 96, 15, 95, 13, 95, 13, 94, 5, 94, 5, 95, 1, 95)
 
-[node name="ShipNavigation" type="NavigationRegion2D" parent="ShipMap256/Ship/Navigation"]
+[node name="Sprite2D" type="Sprite2D" parent="CanvasShip/Ship/SpriteClip"]
+texture = ExtResource("4_tus1a")
+centered = false
+region_rect = Rect2(55.63, 60.9915, 10.7176, 11.2969)
+region_filter_clip_enabled = true
+
+[node name="Navigation" type="Node2D" parent="CanvasShip/Ship"]
+visible = false
+
+[node name="ShipNavigation" type="NavigationRegion2D" parent="CanvasShip/Ship/Navigation"]
 navigation_polygon = SubResource("NavigationPolygon_d4hv0")
 
-[node name="NavMeshCarving" type="Node2D" parent="ShipMap256/Ship/Navigation/ShipNavigation"]
+[node name="NavMeshCarving" type="Node2D" parent="CanvasShip/Ship/Navigation/ShipNavigation"]
 
-[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="ShipMap256/Ship/Navigation/ShipNavigation/NavMeshCarving"]
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="CanvasShip/Ship/Navigation/ShipNavigation/NavMeshCarving"]
 vertices = PackedVector2Array(178, 116, 168, 102, 168, 88, 164, 88, 164, 98, 150, 98, 150, 104, 166, 104, 176, 118, 176, 122, 182, 122, 182, 116)
 affect_navigation_mesh = true
 
-[node name="NavigationObstacle2D2" type="NavigationObstacle2D" parent="ShipMap256/Ship/Navigation/ShipNavigation/NavMeshCarving"]
+[node name="NavigationObstacle2D2" type="NavigationObstacle2D" parent="CanvasShip/Ship/Navigation/ShipNavigation/NavMeshCarving"]
 vertices = PackedVector2Array(138, 98, 124, 98, 124, 88, 118, 88, 118, 106, 110, 114, 106, 114, 106, 122, 112, 122, 112, 118, 126, 104, 138, 104)
 affect_navigation_mesh = true
 
-[node name="NavigationObstacle2D3" type="NavigationObstacle2D" parent="ShipMap256/Ship/Navigation/ShipNavigation/NavMeshCarving"]
+[node name="NavigationObstacle2D3" type="NavigationObstacle2D" parent="CanvasShip/Ship/Navigation/ShipNavigation/NavMeshCarving"]
 vertices = PackedVector2Array(106, 134, 112, 134, 112, 138, 126, 152, 138, 152, 138, 156, 124, 156, 124, 168, 118, 168, 118, 148, 112, 142, 106, 142)
 affect_navigation_mesh = true
 
-[node name="NavigationObstacle2D4" type="NavigationObstacle2D" parent="ShipMap256/Ship/Navigation/ShipNavigation/NavMeshCarving"]
+[node name="NavigationObstacle2D4" type="NavigationObstacle2D" parent="CanvasShip/Ship/Navigation/ShipNavigation/NavMeshCarving"]
 vertices = PackedVector2Array(150, 152, 160, 152, 176, 136, 176, 134, 182, 134, 182, 142, 170, 154, 170, 168, 162, 168, 162, 156, 150, 156)
 affect_navigation_mesh = true
 
-[node name="Doors" type="Node2D" parent="ShipMap256/Ship"]
+[node name="Doors" type="Node2D" parent="CanvasShip/Ship"]
 
-[node name="ConnectionRooms" type="Node2D" parent="ShipMap256/Ship/Doors"]
+[node name="ConnectionRooms" type="Node2D" parent="CanvasShip/Ship/Doors"]
 
-[node name="Left" type="Node2D" parent="ShipMap256/Ship/Doors/ConnectionRooms"]
+[node name="Left" type="Node2D" parent="CanvasShip/Ship/Doors/ConnectionRooms"]
 
-[node name="LeftDownDoor" parent="ShipMap256/Ship/Doors/ConnectionRooms/Left" instance=ExtResource("8_v8lmt")]
+[node name="LeftDownDoor" parent="CanvasShip/Ship/Doors/ConnectionRooms/Left" instance=ExtResource("8_v8lmt")]
 position = Vector2(100, 138)
 
-[node name="LeftUpDoor" parent="ShipMap256/Ship/Doors/ConnectionRooms/Left" instance=ExtResource("8_v8lmt")]
+[node name="LeftUpDoor" parent="CanvasShip/Ship/Doors/ConnectionRooms/Left" instance=ExtResource("8_v8lmt")]
 position = Vector2(100, 118)
 rotation = -3.14159
 
-[node name="DoorLeft" parent="ShipMap256/Ship/Doors/ConnectionRooms/Left" instance=ExtResource("8_v8lmt")]
+[node name="DoorLeft" parent="CanvasShip/Ship/Doors/ConnectionRooms/Left" instance=ExtResource("8_v8lmt")]
 position = Vector2(122, 81)
 rotation = -1.5708
 
-[node name="DoorLeft2" parent="ShipMap256/Ship/Doors/ConnectionRooms/Left" instance=ExtResource("8_v8lmt")]
+[node name="DoorLeft2" parent="CanvasShip/Ship/Doors/ConnectionRooms/Left" instance=ExtResource("8_v8lmt")]
 position = Vector2(122, 175)
 rotation = -4.71238
 
-[node name="Right" type="Node2D" parent="ShipMap256/Ship/Doors/ConnectionRooms"]
+[node name="Right" type="Node2D" parent="CanvasShip/Ship/Doors/ConnectionRooms"]
 
-[node name="RightDownDoor" parent="ShipMap256/Ship/Doors/ConnectionRooms/Right" instance=ExtResource("8_v8lmt")]
+[node name="RightDownDoor" parent="CanvasShip/Ship/Doors/ConnectionRooms/Right" instance=ExtResource("8_v8lmt")]
 position = Vector2(188, 138)
 
-[node name="RightUpDoor" parent="ShipMap256/Ship/Doors/ConnectionRooms/Right" instance=ExtResource("8_v8lmt")]
+[node name="RightUpDoor" parent="CanvasShip/Ship/Doors/ConnectionRooms/Right" instance=ExtResource("8_v8lmt")]
 position = Vector2(188, 118)
 rotation = -3.14159
 
-[node name="DoorLeft" parent="ShipMap256/Ship/Doors/ConnectionRooms/Right" instance=ExtResource("8_v8lmt")]
+[node name="DoorLeft" parent="CanvasShip/Ship/Doors/ConnectionRooms/Right" instance=ExtResource("8_v8lmt")]
 position = Vector2(166, 81)
 rotation = -1.5708
 
-[node name="DoorLeft2" parent="ShipMap256/Ship/Doors/ConnectionRooms/Right" instance=ExtResource("8_v8lmt")]
+[node name="DoorLeft2" parent="CanvasShip/Ship/Doors/ConnectionRooms/Right" instance=ExtResource("8_v8lmt")]
 position = Vector2(166, 175)
 rotation = -4.71238
 
-[node name="Bridge" type="Node2D" parent="ShipMap256/Ship/Doors"]
+[node name="Bridge" type="Node2D" parent="CanvasShip/Ship/Doors"]
 
-[node name="Door5" parent="ShipMap256/Ship/Doors/Bridge" instance=ExtResource("8_v8lmt")]
+[node name="Door5" parent="CanvasShip/Ship/Doors/Bridge" instance=ExtResource("8_v8lmt")]
 position = Vector2(198, 128)
 rotation = -1.57079
 
-[node name="MxBay" type="Node2D" parent="ShipMap256/Ship/Doors"]
+[node name="MxBay" type="Node2D" parent="CanvasShip/Ship/Doors"]
 
-[node name="Door" parent="ShipMap256/Ship/Doors/MxBay" instance=ExtResource("8_v8lmt")]
+[node name="Door" parent="CanvasShip/Ship/Doors/MxBay" instance=ExtResource("8_v8lmt")]
 position = Vector2(100, 185)
 rotation = -3.14159
 
-[node name="Cafe" type="Node2D" parent="ShipMap256/Ship/Doors"]
+[node name="Cafe" type="Node2D" parent="CanvasShip/Ship/Doors"]
 
-[node name="DoorUp" parent="ShipMap256/Ship/Doors/Cafe" instance=ExtResource("8_v8lmt")]
+[node name="DoorUp" parent="CanvasShip/Ship/Doors/Cafe" instance=ExtResource("8_v8lmt")]
 position = Vector2(144, 102)
 
-[node name="DoorDown" parent="ShipMap256/Ship/Doors/Cafe" instance=ExtResource("8_v8lmt")]
+[node name="DoorDown" parent="CanvasShip/Ship/Doors/Cafe" instance=ExtResource("8_v8lmt")]
 position = Vector2(144, 154)
 rotation = 3.14159
 
-[node name="DoorLeft" parent="ShipMap256/Ship/Doors/Cafe" instance=ExtResource("8_v8lmt")]
+[node name="DoorLeft" parent="CanvasShip/Ship/Doors/Cafe" instance=ExtResource("8_v8lmt")]
 position = Vector2(110, 128)
 rotation = -1.5708
 
-[node name="DoorRight" parent="ShipMap256/Ship/Doors/Cafe" instance=ExtResource("8_v8lmt")]
+[node name="DoorRight" parent="CanvasShip/Ship/Doors/Cafe" instance=ExtResource("8_v8lmt")]
 position = Vector2(178, 128)
 rotation = 1.5708
 
-[node name="Cryo" type="Node2D" parent="ShipMap256/Ship/Doors"]
+[node name="Cryo" type="Node2D" parent="CanvasShip/Ship/Doors"]
 
-[node name="DoorUp" parent="ShipMap256/Ship/Doors/Cryo" instance=ExtResource("8_v8lmt")]
+[node name="DoorUp" parent="CanvasShip/Ship/Doors/Cryo" instance=ExtResource("8_v8lmt")]
 position = Vector2(144, 71)
 
-[node name="DoorDown" parent="ShipMap256/Ship/Doors/Cryo" instance=ExtResource("8_v8lmt")]
+[node name="DoorDown" parent="CanvasShip/Ship/Doors/Cryo" instance=ExtResource("8_v8lmt")]
 position = Vector2(144, 185)
 rotation = -3.14159
 
-[node name="DoorLeft" parent="ShipMap256/Ship/Doors/Cryo" instance=ExtResource("8_v8lmt")]
+[node name="DoorLeft" parent="CanvasShip/Ship/Doors/Cryo" instance=ExtResource("8_v8lmt")]
 position = Vector2(90, 128)
 rotation = -4.71238
 
-[node name="Engines" type="Node2D" parent="ShipMap256/Ship/Doors"]
+[node name="Engines" type="Node2D" parent="CanvasShip/Ship/Doors"]
 
-[node name="LeftUpDoor" parent="ShipMap256/Ship/Doors/Engines" instance=ExtResource("8_v8lmt")]
+[node name="LeftUpDoor" parent="CanvasShip/Ship/Doors/Engines" instance=ExtResource("8_v8lmt")]
 position = Vector2(76, 114)
 
-[node name="RightDownDoor" parent="ShipMap256/Ship/Doors/Engines" instance=ExtResource("8_v8lmt")]
+[node name="RightDownDoor" parent="CanvasShip/Ship/Doors/Engines" instance=ExtResource("8_v8lmt")]
 position = Vector2(76, 142)
 rotation = 3.14159
 
-[node name="Comms" type="Node2D" parent="ShipMap256/Ship/Doors"]
+[node name="Comms" type="Node2D" parent="CanvasShip/Ship/Doors"]
 
-[node name="DoorUp" parent="ShipMap256/Ship/Doors/Comms" instance=ExtResource("8_v8lmt")]
+[node name="DoorUp" parent="CanvasShip/Ship/Doors/Comms" instance=ExtResource("8_v8lmt")]
 position = Vector2(188, 71)
 
-[node name="HoldingCell" type="Node2D" parent="ShipMap256/Ship/Doors"]
+[node name="HoldingCell" type="Node2D" parent="CanvasShip/Ship/Doors"]
 
-[node name="DoorUp" parent="ShipMap256/Ship/Doors/HoldingCell" instance=ExtResource("8_v8lmt")]
+[node name="DoorUp" parent="CanvasShip/Ship/Doors/HoldingCell" instance=ExtResource("8_v8lmt")]
 position = Vector2(100, 71)
 
-[node name="Events" type="Node2D" parent="ShipMap256/Ship"]
-
-[node name="Event" parent="ShipMap256/Ship/Events" instance=ExtResource("13_gt725")]
-
-[node name="Event2" parent="ShipMap256/Ship/Events" instance=ExtResource("13_gt725")]
-position = Vector2(68, 92)
-
-[node name="Event3" parent="ShipMap256/Ship/Events" instance=ExtResource("13_gt725")]
-position = Vector2(68, 164)
-
-[node name="Event4" parent="ShipMap256/Ship/Events" instance=ExtResource("13_gt725")]
-position = Vector2(144, 208)
-
-[node name="Event5" parent="ShipMap256/Ship/Events" instance=ExtResource("13_gt725")]
-position = Vector2(240, 128)
-
-[node name="Event6" parent="ShipMap256/Ship/Events" instance=ExtResource("13_gt725")]
-position = Vector2(188, 48)
-
-[node name="Event7" parent="ShipMap256/Ship/Events" instance=ExtResource("13_gt725")]
-position = Vector2(144, 20)
-
-[node name="Event8" parent="ShipMap256/Ship/Events" instance=ExtResource("13_gt725")]
-position = Vector2(96, 44)
-
-[node name="Event9" parent="ShipMap256/Ship/Events" instance=ExtResource("13_gt725")]
-position = Vector2(124, 116)
-
-[node name="Event10" parent="ShipMap256/Ship/Events" instance=ExtResource("13_gt725")]
-position = Vector2(164, 140)
-
-[node name="Event11" parent="ShipMap256/Ship/Events" instance=ExtResource("13_gt725")]
-position = Vector2(96, 212)
-
-[node name="Event12" parent="ShipMap256/Ship/Events" instance=ExtResource("13_gt725")]
-position = Vector2(180, 216)
-
-[node name="Crew" type="Node2D" parent="ShipMap256"]
-
-[node name="Crewmate" parent="ShipMap256/Crew" instance=ExtResource("13_jfsqp")]
-position = Vector2(132, 32)
-movement_speed = 30.0
-
-[node name="Crewmate2" parent="ShipMap256/Crew" instance=ExtResource("13_jfsqp")]
-position = Vector2(156, 32)
-movement_speed = 30.0
-
-[node name="Crewmate3" parent="ShipMap256/Crew" instance=ExtResource("13_jfsqp")]
-position = Vector2(132, 56)
-movement_speed = 30.0
-
-[node name="Crewmate4" parent="ShipMap256/Crew" instance=ExtResource("13_jfsqp")]
-position = Vector2(156, 56)
-movement_speed = 30.0
-
-[node name="Crewmate5" parent="ShipMap256/Crew" instance=ExtResource("13_jfsqp")]
-position = Vector2(132, 196)
-movement_speed = 30.0
-
-[node name="Crewmate6" parent="ShipMap256/Crew" instance=ExtResource("13_jfsqp")]
-position = Vector2(156, 196)
-movement_speed = 30.0
-
-[node name="Crewmate7" parent="ShipMap256/Crew" instance=ExtResource("13_jfsqp")]
-position = Vector2(132, 220)
-movement_speed = 30.0
-
-[node name="Crewmate8" parent="ShipMap256/Crew" instance=ExtResource("13_jfsqp")]
-position = Vector2(156, 220)
-movement_speed = 30.0
-
-[node name="Fire" parent="ShipMap256" instance=ExtResource("15_tqyip")]
-visible = false
-position = Vector2(58, 98)
-scale = Vector2(0.5, 0.5)
-
-[node name="Fire2" parent="ShipMap256" instance=ExtResource("15_tqyip")]
-visible = false
-position = Vector2(52, 97)
-scale = Vector2(0.75, 0.75)
-
-[node name="Fire3" parent="ShipMap256" instance=ExtResource("15_tqyip")]
-visible = false
-position = Vector2(54, 88)
-scale = Vector2(0.5, 0.5)
-
-[node name="Fire4" parent="ShipMap256" instance=ExtResource("15_tqyip")]
-visible = false
-position = Vector2(61, 81)
-scale = Vector2(1.2, 1.2)
-
-[node name="UI" type="CanvasLayer" parent="."]
-visible = false
-offset = Vector2(112, 96)
-transform = Transform2D(1, 0, 0, 1, 112, 96)
+[node name="CanvasBackground" type="CanvasLayer" parent="."]
+layer = -1
 follow_viewport_enabled = true
-follow_viewport_scale = 2.0
 
-[node name="Control" type="Control" parent="UI"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-mouse_filter = 1
+[node name="CanvasModulate" type="CanvasModulate" parent="CanvasBackground"]
+color = Color(0.244136, 0.433631, 0.647634, 1)
 
-[node name="Deck[0]" type="Label" parent="UI/Control"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 152.0
-offset_top = -8.0
-offset_right = 232.0
-offset_bottom = 72.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("6_jjf2f")
-theme_override_font_sizes/font_size = 8
-text = "BRIDGE"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Parallax-space-backgound" type="Sprite2D" parent="CanvasBackground"]
+position = Vector2(960, 544)
+scale = Vector2(7.05882, 6.8)
+texture = ExtResource("11_ukqnq")
 
-[node name="Cargo[1]" type="Label" parent="UI/Control"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 80.0
-offset_top = 72.0
-offset_right = 160.0
-offset_bottom = 176.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("6_jjf2f")
-theme_override_font_sizes/font_size = 8
-text = "CARGO 
-HOLD"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Parallax-space-stars" type="Sprite2D" parent="CanvasBackground"]
+position = Vector2(1376, 240)
+scale = Vector2(4, 4)
+texture = ExtResource("12_53cuo")
 
-[node name="Cryo[3]" type="Label" parent="UI/Control"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -8.0
-offset_top = -200.0
-offset_right = 72.0
-offset_bottom = -80.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("6_jjf2f")
-theme_override_font_sizes/font_size = 8
-text = "NORTH 
-CRYO"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Parallax-space-stars2" type="Sprite2D" parent="CanvasBackground"]
+position = Vector2(240, 576)
+rotation = 2.22468
+scale = Vector2(4, 4)
+texture = ExtResource("12_53cuo")
 
-[node name="Cryo[4]" type="Label" parent="UI/Control"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -8.0
-offset_top = 152.0
-offset_right = 72.0
-offset_bottom = 264.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("6_jjf2f")
-theme_override_font_sizes/font_size = 8
-text = "SOUTH 
-CRYO"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Parallax-space-far-planets" type="Sprite2D" parent="CanvasBackground"]
+position = Vector2(48, 1136)
+scale = Vector2(4, 4)
+texture = ExtResource("13_0mcee")
 
-[node name="Cafe[5]" type="Label" parent="UI/Control"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -24.0
-offset_top = -16.0
-offset_right = 88.0
-offset_bottom = 80.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("6_jjf2f")
-theme_override_font_sizes/font_size = 8
-text = "CAFE"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Parallax-space-ring-planet" type="Sprite2D" parent="CanvasBackground"]
+position = Vector2(48, 80)
+rotation = 1.40802
+scale = Vector2(1.54174, 1.54174)
+texture = ExtResource("14_vaq1e")
 
-[node name="Cafe[5]2" type="Label" parent="UI/Control"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -176.0
-offset_top = -120.0
-offset_right = -80.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("6_jjf2f")
-theme_override_font_sizes/font_size = 8
-text = "ENGINE"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="CRT" type="CanvasLayer" parent="."]
+script = ExtResource("14_ukqnq")
+resolution = Vector2(640, 360)
+scan_line_amount = 0.423
+noise_amount = 0.035
+interference_amount = 0.3
+vignette_amount = 0.978
+aberation_amount = 0.65
+roll_line_amount = 0.0
+metadata/_custom_type_script = "uid://bghaddibpt6f1"
 
-[node name="Cafe[5]3" type="Label" parent="UI/Control"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -184.0
-offset_top = 64.0
-offset_right = -88.0
-offset_bottom = 184.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("6_jjf2f")
-theme_override_font_sizes/font_size = 8
-text = "ENGINE"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Cafe[5]8" type="Label" parent="UI/Control"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -104.0
-offset_top = 168.0
-offset_right = -16.0
-offset_bottom = 187.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("6_jjf2f")
-theme_override_font_sizes/font_size = 8
-text = "maintenance
-bay"
-uppercase = true
-
-[node name="Cafe[5]4" type="Label" parent="UI/Control"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -144.0
-offset_top = 8.0
-offset_right = -80.0
-offset_bottom = 56.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("6_jjf2f")
-theme_override_font_sizes/font_size = 8
-text = "ENGINE
-CONTROL"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Cafe[5]5" type="Label" parent="UI/Control"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 80.0
-offset_top = -152.0
-offset_right = 160.0
-offset_bottom = -88.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("6_jjf2f")
-theme_override_font_sizes/font_size = 8
-text = "COMMS"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Cafe[5]6" type="Label" parent="UI/Control"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -80.0
-offset_top = -152.0
-offset_right = -16.0
-offset_bottom = -88.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("6_jjf2f")
-theme_override_font_sizes/font_size = 8
-text = "HOLDING
-CELL"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Control" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 64.0
-offset_bottom = 64.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-
-[node name="ShipMap64" parent="Control" instance=ExtResource("3_6v3f5")]
-z_index = 2
-position = Vector2(112, 96)
-
-[node name="MissionProgressTimer" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
-
-[node name="GameStartTimer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-autostart = true
-
-[connection signal="timeout" from="MissionProgressTimer" to="." method="_on_mission_progress_bar_timer_timeout"]
-[connection signal="timeout" from="GameStartTimer" to="." method="_on_game_start_timer_timeout"]
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(241.25, 138)
+script = ExtResource("15_53cuo")
