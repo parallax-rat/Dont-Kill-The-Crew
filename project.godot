@@ -27,7 +27,7 @@ config/name="Don't Kill The Crew"
 config/description="Originally developed for the Low Rez Game Jam 2024"
 config/version=".2"
 config/tags=PackedStringArray("game_jam", "low_rez_jam")
-run/main_scene="res://root/scenes/MasterScene.tscn"
+run/main_scene="uid://cciwkt44rpu4e"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/use_filter=false
@@ -36,23 +36,23 @@ config/icon="res://Title_DKTC.png"
 
 [audio]
 
-buses/default_bus_layout="res://root/resources/default_bus_layout.tres"
+buses/default_bus_layout="res://root/resources/audio/default_bus_layout.tres"
 
 [autoload]
 
-Settings="*res://root/autoload/Settings.gd"
-Scenes="*res://addons/scene_manager/scenes.gd"
-Crew="*res://root/scripts/crew.gd"
 Log="*res://addons/logger/logger.gd"
 SceneManager="*res://addons/scene_manager/scene_manager.tscn"
 DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
+Scenes="*res://addons/scene_manager/scenes.gd"
 
 [display]
 
-window/size/viewport_width=768
-window/size/viewport_height=768
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/size/initial_position_type=3
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
+window/stretch/aspect="ignore"
+window/stretch/scale=2.0
 window/stretch/scale_mode="integer"
 mouse_cursor/custom_image="res://root/assets/sprites/gui/Cursor.png"
 mouse_cursor/tooltip_position_offset=Vector2(2, 2)

@@ -6,13 +6,13 @@ const MAP_64_POSITION = Vector2(352, 32)
 
 @export var drag_speed = 160
 
-@onready var display_map: bool = false
-
 var can_zoom: bool = true
 var can_move: bool = true
 var pre_zoom_position = null
 var move_tween
 var zoom_tween
+
+@onready var display_map: bool = false
 
 
 func _process(delta: float) -> void:
