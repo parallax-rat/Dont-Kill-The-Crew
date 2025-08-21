@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="Don't Kill The Crew"
-config/description="Low Rez Game Jam 2024 Entry"
-config/version="0.1"
+config/description="Originally developed for the Low Rez Game Jam 2024"
+config/version=".2"
 config/tags=PackedStringArray("game_jam", "low_rez_jam")
 run/main_scene="res://root/scenes/MasterScene.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
@@ -28,16 +28,14 @@ buses/default_bus_layout="res://root/resources/default_bus_layout.tres"
 [autoload]
 
 Settings="*res://root/autoload/Settings.gd"
-Scenes="*res://root/scripts/Scenes.gd"
+Scenes="res://root/scripts/Scenes.gd"
 Crew="*res://root/scripts/crew.gd"
 
 [display]
 
-window/size/viewport_width=256
-window/size/viewport_height=256
+window/size/viewport_width=768
+window/size/viewport_height=768
 window/size/initial_position_type=3
-window/size/window_width_override=1024
-window/size/window_height_override=1024
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
 mouse_cursor/custom_image="res://root/assets/sprites/gui/Cursor.png"
@@ -46,6 +44,10 @@ mouse_cursor/tooltip_position_offset=Vector2(2, 2)
 [dotnet]
 
 project/assembly_name="Low Rez Jam"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gdLinter/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
 [file_customization]
 
