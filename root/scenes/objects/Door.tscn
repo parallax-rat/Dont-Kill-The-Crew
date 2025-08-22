@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://6b1fy233f2ad" path="res://root/assets/sfx/Tone2A_FourthOctaveDown.wav" id="4_ujqjj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yti0a"]
-size = Vector2(20, 12)
+size = Vector2(18, 5)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hnpmb"]
 radius = 2.5
@@ -166,6 +166,7 @@ script = ExtResource("1_p257r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea"]
 visible = false
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_yti0a")
 
 [node name="CrewArea" type="Area2D" parent="."]
@@ -189,8 +190,8 @@ scale = Vector2(1.00547, 1)
 occluder = SubResource("OccluderPolygon2D_bgvl5")
 
 [node name="ColorRect" type="ColorRect" parent="Sprite2D"]
+visible = false
 modulate = Color(1, 1, 1, 0.27451)
-clip_children = 2
 offset_left = -7.0
 offset_top = -2.0
 offset_right = 7.0
@@ -208,7 +209,7 @@ color = Color(0, 1, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_07o8q")
+&"": SubResource("AnimationLibrary_07o8q")
 }
 speed_scale = 1.5
 

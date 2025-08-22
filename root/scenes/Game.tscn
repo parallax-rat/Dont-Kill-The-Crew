@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cciwkt44rpu4e"]
+[gd_scene load_steps=21 format=3 uid="uid://cciwkt44rpu4e"]
 
 [ext_resource type="Texture2D" uid="uid://dohtuo8v6i0je" path="res://root/assets/sprites/light/32x32 textures (52).png" id="4_7mps6"]
 [ext_resource type="Texture2D" uid="uid://dy3xfuoctobgi" path="res://root/assets/sprites/ship/ShipMapFull.png" id="4_tus1a"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b81818huw0xtk" path="res://root/assets/sprites/light/32x32 textures (41).png" id="8_l2ywu"]
 [ext_resource type="PackedScene" uid="uid://bdb5t73834mp" path="res://root/scenes/objects/Door.tscn" id="8_v8lmt"]
 [ext_resource type="Texture2D" uid="uid://0bhlb7xbmpd7" path="res://root/assets/sprites/light/32x32 textures (17).png" id="10_lpakt"]
+[ext_resource type="PackedScene" uid="uid://da3p3lsyffnjk" path="res://root/scenes/crew/Crew.tscn" id="11_0mcee"]
 [ext_resource type="PackedScene" uid="uid://bey2bbj1fv6ux" path="res://root/scenes/lighting/light_occlusion.tscn" id="11_a4oq3"]
 [ext_resource type="Texture2D" uid="uid://ykafevb6qvv4" path="res://root/assets/sprites/bg/parallax/parallax-space-backgound.png" id="11_ukqnq"]
 [ext_resource type="Texture2D" uid="uid://k22wf0p284rm" path="res://root/assets/sprites/bg/parallax/parallax-space-stars.png" id="12_53cuo"]
@@ -43,6 +44,10 @@ texture_filter = 1
 texture_repeat = 3
 scale = Vector2(4, 4)
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(128, 128)
+script = ExtResource("15_53cuo")
+
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_adnvc")
 volume_db = -31.558
@@ -52,18 +57,14 @@ autoplay = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_glgtt")
 
-[node name="Crew" type="Node" parent="."]
-
 [node name="CanvasShip" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
 [node name="AmbientLight" type="CanvasModulate" parent="CanvasShip"]
-position = Vector2(448, 24)
 scale = Vector2(4, 4)
 color = Color(0.0627451, 0.0627451, 0.0627451, 1)
 
 [node name="Ship" type="Node2D" parent="CanvasShip"]
-position = Vector2(448, 24)
 scale = Vector2(4, 4)
 
 [node name="EnvironmentLighting" type="Node2D" parent="CanvasShip/Ship"]
@@ -472,51 +473,52 @@ position = Vector2(188, 71)
 [node name="DoorUp" parent="CanvasShip/Ship/Doors/HoldingCell" instance=ExtResource("8_v8lmt")]
 position = Vector2(100, 71)
 
+[node name="Crew" type="Node" parent="CanvasShip"]
+
+[node name="Crew" parent="CanvasShip/Crew" instance=ExtResource("11_0mcee")]
+position = Vector2(540, 672)
+
 [node name="CanvasBackground" type="CanvasLayer" parent="."]
 layer = -1
 follow_viewport_enabled = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="CanvasBackground"]
-color = Color(0.244136, 0.433631, 0.647634, 1)
+color = Color(0.206064, 0.379108, 0.573917, 1)
 
 [node name="Parallax-space-backgound" type="Sprite2D" parent="CanvasBackground"]
-position = Vector2(960, 544)
+position = Vector2(512, 512)
 scale = Vector2(7.05882, 6.8)
 texture = ExtResource("11_ukqnq")
 
 [node name="Parallax-space-stars" type="Sprite2D" parent="CanvasBackground"]
-position = Vector2(1376, 240)
+position = Vector2(522, 708)
 scale = Vector2(4, 4)
 texture = ExtResource("12_53cuo")
 
 [node name="Parallax-space-stars2" type="Sprite2D" parent="CanvasBackground"]
-position = Vector2(240, 576)
+position = Vector2(653, 220)
 rotation = 2.22468
 scale = Vector2(4, 4)
 texture = ExtResource("12_53cuo")
 
 [node name="Parallax-space-far-planets" type="Sprite2D" parent="CanvasBackground"]
-position = Vector2(48, 1136)
+position = Vector2(358, 1128)
 scale = Vector2(4, 4)
 texture = ExtResource("13_0mcee")
 
 [node name="Parallax-space-ring-planet" type="Sprite2D" parent="CanvasBackground"]
-position = Vector2(48, 80)
+position = Vector2(78, 54)
 rotation = 1.40802
 scale = Vector2(1.54174, 1.54174)
 texture = ExtResource("14_vaq1e")
 
 [node name="CRT" type="CanvasLayer" parent="."]
 script = ExtResource("14_ukqnq")
-resolution = Vector2(640, 360)
-scan_line_amount = 0.423
+resolution = Vector2(1920, 1080)
+scan_line_amount = 0.0
 noise_amount = 0.035
 interference_amount = 0.3
-vignette_amount = 0.978
-aberation_amount = 0.65
+vignette_amount = 2.0
+vignette_intensity = 0.5
 roll_line_amount = 0.0
 metadata/_custom_type_script = "uid://bghaddibpt6f1"
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(241.25, 138)
-script = ExtResource("15_53cuo")

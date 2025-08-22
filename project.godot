@@ -47,12 +47,10 @@ Scenes="*res://addons/scene_manager/scenes.gd"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=1024
+window/size/viewport_height=1024
 window/size/initial_position_type=3
 window/stretch/mode="viewport"
-window/stretch/aspect="ignore"
-window/stretch/scale=2.0
 window/stretch/scale_mode="integer"
 mouse_cursor/custom_image="res://root/assets/sprites/gui/Cursor.png"
 mouse_cursor/tooltip_position_offset=Vector2(2, 2)
