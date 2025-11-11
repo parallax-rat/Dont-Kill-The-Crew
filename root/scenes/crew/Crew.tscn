@@ -1,12 +1,24 @@
-[gd_scene load_steps=36 format=3 uid="uid://da3p3lsyffnjk"]
+[gd_scene load_steps=34 format=3 uid="uid://da3p3lsyffnjk"]
 
 [ext_resource type="Script" uid="uid://b5ae5itgklnl1" path="res://root/scripts/crewmate.gd" id="1_bfr18"]
-[ext_resource type="Texture2D" uid="uid://2wb3tv4bcfbj" path="res://root/assets/sprites/light/32x32_Arcane_0.png" id="2_f7y1v"]
 [ext_resource type="Texture2D" uid="uid://d27sfgnc1hy2l" path="res://root/assets/sprites/units/crew/Crew_AllAnims.png" id="3_qxvv6"]
 [ext_resource type="Texture2D" uid="uid://bv48ws3iugwkt" path="res://root/assets/sprites/units/idle.png" id="4_c2isl"]
 [ext_resource type="AudioStream" uid="uid://cl513jsgi4r8e" path="res://root/assets/sfx/crew/Humanoid_exploding.mp3" id="5_ruvp8"]
 [ext_resource type="AudioStream" uid="uid://b1tkmmn0tqrhp" path="res://root/assets/sfx/crew/Ugh2.wav" id="6_xqoox"]
-[ext_resource type="FontFile" uid="uid://c4eu1kn67kihh" path="res://root/resources/fonts/PublicPixel.ttf" id="7_olbdp"]
+
+[sub_resource type="Curve" id="Curve_k6j2f"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0.253555, 1.79856), 0.0, 46.9853, 0, 0, Vector2(0.988152, 100), -3.0835, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_ufyr4"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0.632701, 1.07644), 0.0, -0.308341, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_uqsom"]
+offsets = PackedFloat32Array(0, 0.411168)
+colors = PackedColorArray(0.31802, 0.31802, 0.31802, 1, 1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nhjte"]
 atlas = ExtResource("3_qxvv6")
@@ -204,29 +216,14 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e20ki"]
-radius = 4.0
+radius = 16.0
 
-[sub_resource type="Curve" id="Curve_k6j2f"]
-_limits = [0.0, 100.0, 0.0, 1.0]
-_data = [Vector2(0.253555, 1.79856), 0.0, 46.9853, 0, 0, Vector2(0.988152, 100), -3.0835, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_ufyr4"]
-_limits = [0.0, 2.0, 0.0, 1.0]
-_data = [Vector2(0.632701, 1.07644), 0.0, -0.308341, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_uqsom"]
-offsets = PackedFloat32Array(0, 0.411168)
-colors = PackedColorArray(0.31802, 0.31802, 0.31802, 1, 1, 1, 1, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3pm43"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kydg6"]
 bg_color = Color(0, 0.92549, 0.980392, 0.745098)
-
-[sub_resource type="LabelSettings" id="LabelSettings_2ne8n"]
-font = ExtResource("7_olbdp")
-outline_size = 8
-outline_color = Color(0, 0, 0, 1)
+corner_detail = 1
+anti_aliasing = false
 
 [node name="Crew" type="CharacterBody2D" groups=["Crew"]]
 collision_mask = 7
@@ -238,16 +235,34 @@ random_colors = PackedColorArray(0.843137, 0.482353, 0.729412, 1, 0.6, 0.898039,
 dead_color = Color(0.623529, 0, 0, 1)
 metadata/crew = true
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-z_index = -3
-position = Vector2(0, 1.33333)
-rotation = -3.14159
-enabled = false
-shadow_enabled = true
-texture = ExtResource("2_f7y1v")
-texture_scale = 1.5
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(12, 13)
+emitting = false
+amount = 40
+lifetime = 10.88
+one_shot = true
+preprocess = 0.1
+speed_scale = 3.58
+explosiveness = 1.0
+randomness = 0.6
+emission_shape = 2
+emission_sphere_radius = 6.0
+direction = Vector2(0, -1)
+gravity = Vector2(0, 45)
+initial_velocity_min = 40.0
+initial_velocity_max = 60.0
+damping_min = 41.991
+damping_max = 54.299
+damping_curve = SubResource("Curve_k6j2f")
+scale_amount_min = 0.2
+scale_amount_max = 0.8
+scale_amount_curve = SubResource("Curve_ufyr4")
+color = Color(0.941176, 0, 0, 0.498039)
+color_initial_ramp = SubResource("Gradient_uqsom")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(16, 16)
+scale = Vector2(2.90909, 2.90909)
 sprite_frames = SubResource("SpriteFrames_1uijs")
 animation = &"walk"
 autoplay = "idle"
@@ -256,35 +271,12 @@ frame_progress = 0.447807
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(-1, 1)
+position = Vector2(16, 16)
 shape = SubResource("CircleShape2D_e20ki")
 debug_color = Color(0.921605, 0.240823, 0.367457, 0.42)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_mask = 0
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-emitting = false
-amount = 22
-lifetime = 4.0
-one_shot = true
-preprocess = 0.1
-explosiveness = 1.0
-randomness = 0.6
-emission_shape = 2
-emission_sphere_radius = 6.0
-direction = Vector2(0, -1)
-spread = 90.0
-gravity = Vector2(0, 45)
-initial_velocity_min = 40.0
-initial_velocity_max = 60.0
-damping_min = 41.991
-damping_max = 54.299
-damping_curve = SubResource("Curve_k6j2f")
-scale_amount_max = 2.5
-scale_amount_curve = SubResource("Curve_ufyr4")
-color = Color(0.941176, 0, 0, 0.498039)
-color_initial_ramp = SubResource("Gradient_uqsom")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_ruvp8")
@@ -293,7 +285,7 @@ pitch_scale = 0.8
 
 [node name="AudioStreamPlayer2D_Oughh" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_xqoox")
-bus = &"Reverb"
+volume_db = 7.495
 
 [node name="DecayTimer" type="Timer" parent="."]
 wait_time = 2.5
@@ -304,25 +296,15 @@ wait_time = 4.0
 one_shot = true
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 24.0
-offset_bottom = -4.0
+offset_top = -4.0
+offset_right = 64.0
+offset_bottom = 3.0
 scale = Vector2(0.5, 0.5)
+theme_override_styles/background = SubResource("StyleBoxEmpty_3pm43")
 theme_override_styles/fill = SubResource("StyleBoxFlat_kydg6")
 max_value = 4.0
 step = 0.1
 show_percentage = false
-
-[node name="NameLabel" type="Label" parent="ProgressBar"]
-layout_mode = 0
-offset_left = -8.0
-offset_top = -12.0
-offset_right = 56.0
-offset_bottom = 4.0
-scale = Vector2(0.75, 0.75)
-text = "Name"
-label_settings = SubResource("LabelSettings_2ne8n")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
